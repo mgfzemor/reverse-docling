@@ -1,0 +1,57 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block style %}
+.band { background: {{ s.primary }}; color: #fff; padding: 14px 18px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
+.band .brand { display: flex; align-items: center; gap: 12px; font-size: 15pt; font-weight: 700; }
+.band .brand svg { filter: brightness(1.6); }
+.band .meta { text-align: end; font-size: 8.5pt; opacity: .9; }
+.band h1 { margin: 0; font-size: 12pt; font-weight: 600; }
+.row { display: flex; gap: 14px; margin: 14px 0; }
+.card { flex: 1; background: {{ s.light }}; border-radius: 8px; padding: 10px 12px; }
+.card .label { font-size: 7.5pt; text-transform: uppercase; color: #555; letter-spacing: .4px; }
+.card .value { font-size: 12pt; font-weight: 700; margin-top: 2px; }
+.who { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 10px; }
+.who .label { font-size: 7.5pt; color: #777; text-transform: uppercase; }
+.tx th { background: {{ s.light }}; color: {{ s.primary }}; font-size: 8pt; padding: 6px; text-transform: uppercase; }
+.tx td { padding: 5px 6px; border-bottom: 1px solid #eee; }
+.tx tbody tr:nth-child(even) td { background: #fafafa; }
+.out { color: #b91c1c; }
+.in { color: #047857; }
+.foot { margin-top: 16px; font-size: 7.5pt; color: #777; }
+{% endblock %}
+{% block body %}
+<div class="band">
+  <div class="brand">{{ s.logo }}<span>{{ doc.bank_name }}</span></div>
+  <div class="meta"><h1>{{ t('bank_statement.title') }}</h1>
+    {{ fmt.date(doc.period_start, 'long') }} – {{ fmt.date(doc.period_end, 'long') }}</div>
+</div>
+
+<div class="row who">
+  <div><div class="label">{{ t('bank_statement.account_holder') }}</div>
+    <strong>{{ person.full_name }}</strong><br>{{ person.address.one_line() }}</div>
+  <div style="text-align:end"><div class="label">{{ t('bank_statement.account_number') }}</div>
+    <span class="ltr">{{ doc.iban or doc.account_number }}</span><br>
+    <span class="small muted">{{ t('bank_statement.customer_number') }}: {{ doc.customer_number }}</span></div>
+</div>
+
+<div class="row">
+  <div class="card"><div class="label">{{ t('bank_statement.opening_balance') }}</div><div class="value">{{ fmt.money(doc.opening_balance) }}</div></div>
+  <div class="card"><div class="label">{{ t('bank_statement.total_credits') }}</div><div class="value in">+{{ fmt.money(doc.total_credit) }}</div></div>
+  <div class="card"><div class="label">{{ t('bank_statement.total_debits') }}</div><div class="value out">−{{ fmt.money(doc.total_debit) }}</div></div>
+  <div class="card"><div class="label">{{ t('bank_statement.closing_balance') }}</div><div class="value">{{ fmt.money(doc.closing_balance) }}</div></div>
+</div>
+
+<table class="tx">
+  <thead><tr><th>{{ t('common.date') }}</th><th>{{ t('common.description') }}</th>
+    <th class="num">{{ t('common.amount') }}</th><th class="num">{{ t('bank_statement.balance') }}</th></tr></thead>
+  <tbody>
+  {% for tx in doc.transactions %}
+    <tr><td class="nowrap">{{ fmt.date(tx.date, 'medium') }}</td><td>{{ tx.description }}</td>
+      {% if tx.debit %}<td class="num out">−{{ fmt.money(tx.debit, symbol=False) }}</td>
+      {% else %}<td class="num in">+{{ fmt.money(tx.credit, symbol=False) }}</td>{% endif %}
+      <td class="num">{{ fmt.money(tx.balance, symbol=False) }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+<div class="foot">{{ t('bank_statement.legal') }} · BIC <span class="ltr">{{ doc.bank_bic }}</span></div>
+{% endblock %}

@@ -1,0 +1,242 @@
+common:
+  page: Página
+  date: Fecha
+  description: Concepto
+  amount: Importe
+  currency: Divisa
+  issue_date: Fecha de emisión
+  name: Nombre
+  address: Dirección
+  date_of_birth: Fecha de nacimiento
+  place_of_birth: Lugar de nacimiento
+  nationality: Nacionalidad
+  phone: Teléfono
+  email: Correo electrónico
+  total: Total
+  subtotal: Base imponible
+  tax: IVA
+  signature: Firma
+  quantity: Cant.
+  unit_price: Precio unitario
+  reference: Referencia
+  status: Estado
+  paid: Pagado
+  unpaid: Pendiente
+  due_date: Vencimiento
+  period: Periodo
+  discount: Descuento
+
+brands:
+  words: [Mediterráneo, Alameda, Levante, Sierra, Castilla, Atlántico, Alborada, Robledal, Cantábrico, Solana, Duero, Mirador]
+  bank: ["Banco {word}", "Caja {word}", "{word} Banca", "Banco Popular {word}"]
+  airline: ["{word} Líneas Aéreas", "Vuela {word}", "Air {word}"]
+  hotel: ["Hotel {word}", "Gran Hotel {word}", "{word} Suites", "Parador {word}"]
+  utility: ["{word} Energía", "Eléctrica {word}", "Suministros {word}"]
+  company: ["{word} Soluciones S.L.", "Grupo {word} S.A.", "{word} Tecnología S.L."]
+  registry: [Registro Civil, Registro Civil Central, Oficina del Registro Civil]
+
+airports:
+  JFK: Nueva York
+  LAX: Los Ángeles
+  LHR: Londres
+  CDG: París
+  FRA: Fráncfort
+  MAD: Madrid
+  DXB: Dubái
+  RUH: Riad
+  JED: Yeda
+  SVO: Moscú
+  PEK: Pekín
+  PVG: Shanghái
+  NRT: Tokio
+  GRU: São Paulo
+  DEL: Nueva Delhi
+  BOM: Bombay
+
+bank_statement:
+  title: Extracto de cuenta
+  statement_no: Extracto nº
+  branch: Oficina
+  account_holder: Titular
+  account_number: Número de cuenta
+  account_type: Tipo de cuenta
+  customer_number: Nº de cliente
+  period: Periodo
+  reference: Referencia
+  value_date: Fecha valor
+  debit: Cargo
+  credit: Abono
+  balance: Saldo
+  opening_balance: Saldo inicial
+  closing_balance: Saldo final
+  total_debits: Total cargos
+  total_credits: Total abonos
+  legal: Le rogamos compruebe este extracto. Cualquier discrepancia deberá comunicarse en un plazo de 30 días. Depósitos garantizados por el Fondo de Garantía de Depósitos.
+  account_types: [Cuenta corriente, Cuenta de ahorro, Cuenta nómina, Cuenta online]
+  merchants: [Supermercado El Árbol, Farmacia Central, Cafetería La Plaza, Gasolinera Ruta, Metro, Librería Lápiz, Frutería Sol, Restaurante Casa Pepe, Electro Hogar, Bricolaje Total, Cines Avenida, Mercado de Abastos]
+  tx:
+    salary: "ABONO NÓMINA {employer}"
+    card: "COMPRA TARJ. {merchant}"
+    grocery: "PAGO TPV {merchant}"
+    transfer_out: "TRANSFERENCIA EMITIDA {ref}"
+    transfer_in: "TRANSFERENCIA RECIBIDA {ref}"
+    atm: "REINTEGRO CAJERO {ref}"
+    utility: "RECIBO LUZ {ref}"
+    subscription: "SUSCRIPCIÓN {merchant}"
+    fee: "COMISIÓN MANTENIMIENTO"
+
+flight_ticket:
+  title: Recibo de billete electrónico
+  itinerary: Itinerario
+  boarding_pass: Tarjeta de embarque
+  passenger: Pasajero
+  booking_reference: Localizador
+  ticket_number: Número de billete
+  frequent_flyer: Tarjeta de fidelización
+  issued_by: Emitido por
+  flight: Vuelo
+  from: Origen
+  to: Destino
+  departure: Salida
+  arrival: Llegada
+  terminal: Terminal
+  gate: Puerta
+  seat: Asiento
+  boarding_time: Embarque
+  class: Clase
+  baggage: Equipaje
+  status: Estado
+  fare: Tarifa
+  taxes_fees: Tasas y cargos
+  payment: Forma de pago
+  notice: La facturación cierra 60 minutos antes de la salida. La puerta de embarque cierra 20 minutos antes. Lleve un documento de identidad válido.
+  payment_methods: [Tarjeta de crédito, Tarjeta de débito, Efectivo, Transferencia, Agencia de viajes]
+  cabins:
+    economy: Turista
+    premium: Turista Premium
+    business: Business
+    first: Primera
+
+hotel_reservation:
+  title: Confirmación de reserva
+  voucher: Bono de alojamiento
+  greeting: "Estimado/a {name}, gracias por su reserva. Le esperamos con mucho gusto."
+  confirmation_number: Número de confirmación
+  booking_reference: Referencia de reserva
+  booking_date: Fecha de reserva
+  guest: Huésped
+  check_in: Entrada
+  check_out: Salida
+  from_time: desde las
+  until_time: hasta las
+  nights: Noches
+  room_count: Habitaciones
+  room_type: Tipo de habitación
+  guests: Huéspedes
+  adults: adultos
+  children: niños
+  board: Régimen
+  rate_per_night: Precio por noche
+  taxes: Impuestos y tasas
+  total_price: Precio total
+  payment_status: Estado del pago
+  pay_at_hotel: Pago en el hotel
+  cancellation: "Cancelación gratuita hasta el {date}. Después se cobrará la primera noche."
+  contact: Contacto del hotel
+  streets: [Calle Mayor, Gran Vía, Paseo de la Castellana, Calle Alcalá, Avenida del Mar, Calle Real, Rambla de Cataluña, Plaza de España]
+  boards: [Solo alojamiento, Alojamiento y desayuno, Media pensión, Pensión completa, Todo incluido]
+  rooms:
+    standard: Habitación doble estándar
+    deluxe: Habitación deluxe cama king
+    twin: Habitación superior dos camas
+    suite: Junior suite
+    family: Habitación familiar
+
+birth_certificate:
+  title: Certificado de nacimiento
+  subtitle: Certificación literal de inscripción de nacimiento
+  certificate_number: Nº de certificado
+  registration_number: Tomo / Folio / Sección
+  district: Registro Civil de
+  child: Datos del inscrito
+  full_name: Nombre y apellidos
+  sex: Sexo
+  male: Varón
+  female: Mujer
+  time_of_birth: Hora de nacimiento
+  hospital: Lugar del parto
+  father: Padre
+  mother: Madre
+  parents: Datos de los progenitores
+  registration_date: Fecha de inscripción
+  registrar: Encargado del Registro
+  certify: Certifico que la presente es copia fiel de la inscripción obrante en este Registro Civil.
+  hospitals: [Hospital General Universitario, Hospital Materno-Infantil, Clínica Santa Elena, Hospital Comarcal, Hospital Clínico]
+  registrar_titles: [Encargado del Registro Civil, Letrado de la Administración de Justicia, Funcionario Delegado]
+
+utility_bill:
+  title: Factura de electricidad
+  account_number: Nº de contrato
+  invoice_number: Nº de factura
+  meter_number: Nº de contador
+  customer: Titular
+  service_address: Dirección de suministro
+  billing_period: Periodo de facturación
+  amount_due: Importe a pagar
+  pay_by: Fecha de cargo
+  meter_readings: Lecturas del contador
+  previous_reading: Lectura anterior
+  current_reading: Lectura actual
+  consumption: Consumo
+  charges: Detalle de la factura
+  usage_history: Su consumo (kWh)
+  customer_service: Atención al cliente
+  lines:
+    energy: Término de energía
+    network: Peajes y cargos
+    fixed: Término de potencia
+
+payslip:
+  title: Nómina
+  employer: Empresa
+  employee: Trabajador
+  employee_id: Nº de empleado
+  tax_id: NIF
+  job_title: Categoría
+  department: Departamento
+  hire_date: Antigüedad
+  pay_period: Periodo de liquidación
+  pay_date: Fecha de pago
+  bank_account: Cuenta de abono
+  earnings_title: Devengos
+  deductions_title: Deducciones
+  gross_pay: Total devengado
+  total_deductions: Total a deducir
+  net_pay: Líquido a percibir
+  year_to_date: Acumulado anual
+  confidential: Confidencial
+  departments: [Finanzas, Operaciones, Ventas, Ingeniería, Recursos Humanos, Logística, Atención al Cliente, Marketing]
+  earnings:
+    basic: Salario base
+    housing: Plus de vivienda
+    transport: Plus de transporte
+    overtime: Horas extraordinarias
+    bonus: Paga por objetivos
+  deductions:
+    income_tax: Retención IRPF
+    social_security: Contingencias comunes
+    pension: Plan de pensiones
+    health: Seguro médico
+
+invoice:
+  title: Factura
+  invoice_number: Factura nº
+  order_number: Pedido nº
+  bill_to: Facturar a
+  from: Emisor
+  tax_id: CIF
+  item: Artículo
+  payment_details: Datos de pago
+  bank_transfer: Transferencia a
+  thanks: ¡Gracias por su confianza!
+  items: [Mantenimiento web (mensual), Servicios de consultoría (horas), Silla de oficina, Soporte para portátil, Cartucho de tóner, Licencia de software (anual), Plan de alojamiento en la nube, Servicios de diseño gráfico, Servicios de traducción, Teclado inalámbrico, Base USB-C, Envío e instalación]

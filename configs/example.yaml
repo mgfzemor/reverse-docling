@@ -1,0 +1,48 @@
+# rdock generate -c configs/example.yaml
+seed: 42
+
+# mode: random -> a new Faker persona per document (best for classifier datasets)
+# mode: manual -> the fields below are used everywhere; anything left out is filled per language
+identity:
+  mode: manual
+  full_name: Maria Silva
+  gender: female
+  date_of_birth: 1990-04-12
+  nationality: Brasil
+  email: maria.silva@example.com
+  address:
+    street: Rua das Flores
+    building_number: "120"
+    city: Porto Alegre
+    state: RS
+    postcode: 90010-000
+    country: Brasil
+
+count_per_combination: 2
+
+documents:
+  - type: bank_statement          # templates: all | [t01_classic, t03_compact]
+    templates: all
+  - type: flight_ticket
+  - type: hotel_reservation
+  - type: birth_certificate
+  - type: utility_bill
+  - type: payslip
+  - type: invoice
+
+languages: [en, ar, zh, ru, pt]
+
+output:
+  format: images                  # pdf | images
+  image_format: png               # png | jpg
+  dpi: 150
+  dir: out/example
+
+degradation:
+  preset: medium                  # none | light | medium | heavy
+  probability: 0.6                # share of documents that get degraded
+  # overrides:                    # force specific effects, value = [min, max]
+  #   rotation: [-3, 3]
+  #   gaussian_blur: [1.0, 1.5]
+
+specimen_watermark: false

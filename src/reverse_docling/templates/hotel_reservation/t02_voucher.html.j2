@@ -1,0 +1,39 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block meta %}<meta name="rdock-footer" content="off">{% endblock %}
+{% block style %}
+body { font-family: 'Noto Serif', Georgia, {{ font_stack | safe }}; }
+.frame { border: 2px solid {{ s.primary }}; padding: 18px 22px; }
+.title { text-align: center; border-bottom: 1px solid {{ s.primary }}; padding-bottom: 10px; margin-bottom: 14px; }
+.title h1 { margin: 6px 0 2px; font-size: 18pt; letter-spacing: 2px; text-transform: uppercase; color: {{ s.primary }}; }
+.title .hotel { font-size: 12pt; font-weight: 700; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 30px; }
+.f .l { font-size: 7.5pt; color: #666; text-transform: uppercase; border-bottom: 1px dotted #aaa; }
+.f .v { font-size: 10.5pt; padding: 3px 0 0; }
+.total { margin-top: 18px; padding: 10px; background: {{ s.light }}; display: flex; justify-content: space-between; font-size: 12pt; font-weight: 700; }
+.foot { margin-top: 14px; font-size: 8pt; color: #555; }
+.stamp { margin-top: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+.sig { border-top: 1px solid #333; width: 55mm; text-align: center; font-size: 8pt; padding-top: 3px; }
+{% endblock %}
+{% block body %}
+<div class="frame">
+  <div class="title">{{ s.logo }}<h1>{{ t('hotel_reservation.voucher') }}</h1>
+    <div class="hotel">{{ doc.hotel_name }}</div><div class="small muted">{{ doc.hotel_address }}, {{ doc.hotel_city }}</div></div>
+  <div class="cols">
+    <div class="f"><div class="l">{{ t('hotel_reservation.guest') }}</div><div class="v">{{ doc.guest_name }}</div></div>
+    <div class="f"><div class="l">{{ t('hotel_reservation.confirmation_number') }}</div><div class="v ltr">{{ doc.confirmation_number }}</div></div>
+    <div class="f"><div class="l">{{ t('hotel_reservation.check_in') }}</div><div class="v">{{ fmt.date(doc.check_in, 'full') }}</div></div>
+    <div class="f"><div class="l">{{ t('hotel_reservation.check_out') }}</div><div class="v">{{ fmt.date(doc.check_out, 'full') }}</div></div>
+    <div class="f"><div class="l">{{ t('hotel_reservation.room_type') }}</div><div class="v">{{ doc.room_type }}</div></div>
+    <div class="f"><div class="l">{{ t('hotel_reservation.board') }}</div><div class="v">{{ doc.board }}</div></div>
+    <div class="f"><div class="l">{{ t('hotel_reservation.nights') }} / {{ t('hotel_reservation.room_count') }}</div><div class="v">{{ doc.nights }} / {{ doc.rooms }}</div></div>
+    <div class="f"><div class="l">{{ t('hotel_reservation.guests') }}</div><div class="v">{{ doc.adults }} + {{ doc.children }}</div></div>
+    <div class="f"><div class="l">{{ t('common.phone') }}</div><div class="v ltr">{{ doc.guest_phone }}</div></div>
+    <div class="f"><div class="l">{{ t('hotel_reservation.booking_date') }}</div><div class="v">{{ fmt.date(doc.booking_date, 'short') }}</div></div>
+  </div>
+  <div class="total"><span>{{ t('hotel_reservation.total_price') }}</span><span>{{ fmt.money(doc.total) }} · {{ t('common.paid') if doc.paid else t('common.unpaid') }}</span></div>
+  <div class="foot">{{ t('hotel_reservation.cancellation', date=fmt.date(doc.free_cancellation_until)) }}</div>
+  <div class="stamp"><div class="small muted">{{ t('hotel_reservation.contact') }}: <span class="ltr">{{ doc.hotel_phone }}</span></div>
+    <div class="sig">{{ t('common.signature') }}</div></div>
+</div>
+{% endblock %}

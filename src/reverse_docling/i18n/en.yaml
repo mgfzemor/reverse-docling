@@ -1,0 +1,242 @@
+common:
+  page: Page
+  date: Date
+  description: Description
+  amount: Amount
+  currency: Currency
+  issue_date: Issue date
+  name: Name
+  address: Address
+  date_of_birth: Date of birth
+  place_of_birth: Place of birth
+  nationality: Nationality
+  phone: Phone
+  email: Email
+  total: Total
+  subtotal: Subtotal
+  tax: Tax
+  signature: Signature
+  quantity: Qty
+  unit_price: Unit price
+  reference: Reference
+  status: Status
+  paid: Paid
+  unpaid: Unpaid
+  due_date: Due date
+  period: Period
+  discount: Discount
+
+brands:
+  words: [Harbor, Summit, Crescent, Northwind, Meridian, Oakridge, Bluewater, Silverline, Evergreen, Keystone, Lakeshore, Pinecrest]
+  bank: ["{word} National Bank", "First {word} Bank", "{word} Savings & Trust", "{word} Bank"]
+  airline: ["{word} Airways", "{word} Air", "Fly{word}"]
+  hotel: ["{word} Grand Hotel", "Hotel {word}", "The {word} Suites", "{word} Inn & Resort"]
+  utility: ["{word} Energy", "{word} Power & Light", "{word} Utilities"]
+  company: ["{word} Solutions Inc.", "{word} Group LLC", "{word} Technologies"]
+  registry: [Office of Vital Records, County Registrar of Births, Civil Registration Office]
+
+airports:
+  JFK: New York
+  LAX: Los Angeles
+  LHR: London
+  CDG: Paris
+  FRA: Frankfurt
+  MAD: Madrid
+  DXB: Dubai
+  RUH: Riyadh
+  JED: Jeddah
+  SVO: Moscow
+  PEK: Beijing
+  PVG: Shanghai
+  NRT: Tokyo
+  GRU: São Paulo
+  DEL: New Delhi
+  BOM: Mumbai
+
+bank_statement:
+  title: Account Statement
+  statement_no: Statement no.
+  branch: Branch
+  account_holder: Account holder
+  account_number: Account number
+  account_type: Account type
+  customer_number: Customer no.
+  period: Statement period
+  reference: Reference
+  value_date: Value date
+  debit: Debit
+  credit: Credit
+  balance: Balance
+  opening_balance: Opening balance
+  closing_balance: Closing balance
+  total_debits: Total debits
+  total_credits: Total credits
+  legal: Please examine this statement promptly. Report any discrepancies within 30 days. Deposits are insured up to the applicable limits.
+  account_types: [Checking account, Current account, Savings account, Premium checking]
+  merchants: [Corner Market, City Pharmacy, Urban Coffee, QuickFuel Station, Metro Transit, BookNook, Fresh Foods, Sunset Diner, TechMart, Home & Garden, CinemaPlex, Green Grocer]
+  tx:
+    salary: "PAYROLL CREDIT - {employer}"
+    card: "CARD PURCHASE {merchant}"
+    grocery: "POS {merchant}"
+    transfer_out: "TRANSFER TO ACC REF {ref}"
+    transfer_in: "INCOMING TRANSFER REF {ref}"
+    atm: "ATM WITHDRAWAL {ref}"
+    utility: "DIRECT DEBIT ELECTRICITY {ref}"
+    subscription: "SUBSCRIPTION {merchant}"
+    fee: "MONTHLY ACCOUNT FEE"
+
+flight_ticket:
+  title: Electronic Ticket Receipt
+  itinerary: Itinerary
+  boarding_pass: Boarding Pass
+  passenger: Passenger
+  booking_reference: Booking reference (PNR)
+  ticket_number: Ticket number
+  frequent_flyer: Frequent flyer no.
+  issued_by: Issued by
+  flight: Flight
+  from: From
+  to: To
+  departure: Departure
+  arrival: Arrival
+  terminal: Terminal
+  gate: Gate
+  seat: Seat
+  boarding_time: Boarding time
+  class: Class
+  baggage: Baggage
+  status: Status
+  fare: Fare
+  taxes_fees: Taxes, fees and charges
+  payment: Form of payment
+  notice: Check-in closes 60 minutes before departure. Gate closes 20 minutes before departure. Please carry a valid travel document.
+  payment_methods: [Credit card, Debit card, Cash, Bank transfer, Travel agency invoice]
+  cabins:
+    economy: Economy
+    premium: Premium Economy
+    business: Business
+    first: First
+
+hotel_reservation:
+  title: Booking Confirmation
+  voucher: Hotel Voucher
+  greeting: "Dear {name}, thank you for your reservation. We look forward to welcoming you."
+  confirmation_number: Confirmation number
+  booking_reference: Booking reference
+  booking_date: Booking date
+  guest: Guest
+  check_in: Check-in
+  check_out: Check-out
+  from_time: from
+  until_time: until
+  nights: Nights
+  room_count: Rooms
+  room_type: Room type
+  guests: Guests
+  adults: Adults
+  children: Children
+  board: Meal plan
+  rate_per_night: Rate per night
+  taxes: Taxes and fees
+  total_price: Total price
+  payment_status: Payment status
+  pay_at_hotel: Pay at the hotel
+  cancellation: "Free cancellation until {date}. After that, the first night will be charged."
+  contact: Contact the hotel
+  streets: [Main Street, Park Avenue, Ocean Drive, King Street, Market Square, Riverside Road, Station Road, Hill Street]
+  boards: [Room only, Bed and breakfast, Half board, Full board, All inclusive]
+  rooms:
+    standard: Standard Double Room
+    deluxe: Deluxe King Room
+    twin: Superior Twin Room
+    suite: Junior Suite
+    family: Family Room
+
+birth_certificate:
+  title: Certificate of Birth
+  subtitle: Certified copy of an entry of birth
+  certificate_number: Certificate no.
+  registration_number: Registration no.
+  district: Registration district
+  child: Particulars of the child
+  full_name: Full name
+  sex: Sex
+  male: Male
+  female: Female
+  time_of_birth: Time of birth
+  hospital: Place of delivery
+  father: Father
+  mother: Mother
+  parents: Particulars of the parents
+  registration_date: Date of registration
+  registrar: Registrar
+  certify: I hereby certify that this is a true copy of the entry in the register of births kept at this office.
+  hospitals: [General Hospital, St. Mary's Medical Center, City Maternity Hospital, Regional Medical Center, University Hospital]
+  registrar_titles: [Registrar of Births, Deputy Registrar, Superintendent Registrar]
+
+utility_bill:
+  title: Electricity Bill
+  account_number: Account number
+  invoice_number: Invoice number
+  meter_number: Meter number
+  customer: Customer
+  service_address: Service address
+  billing_period: Billing period
+  amount_due: Amount due
+  pay_by: Please pay by
+  meter_readings: Meter readings
+  previous_reading: Previous reading
+  current_reading: Current reading
+  consumption: Consumption
+  charges: Charges
+  usage_history: Your usage (kWh)
+  customer_service: Customer service
+  lines:
+    energy: Energy charge
+    network: Network and distribution
+    fixed: Fixed service charge
+
+payslip:
+  title: Payslip
+  employer: Employer
+  employee: Employee
+  employee_id: Employee ID
+  tax_id: Tax ID
+  job_title: Position
+  department: Department
+  hire_date: Hire date
+  pay_period: Pay period
+  pay_date: Pay date
+  bank_account: Paid to account
+  earnings_title: Earnings
+  deductions_title: Deductions
+  gross_pay: Gross pay
+  total_deductions: Total deductions
+  net_pay: Net pay
+  year_to_date: Year to date
+  confidential: Private and confidential
+  departments: [Finance, Operations, Sales, Engineering, Human Resources, Logistics, Customer Service, Marketing]
+  earnings:
+    basic: Basic salary
+    housing: Housing allowance
+    transport: Transport allowance
+    overtime: Overtime
+    bonus: Performance bonus
+  deductions:
+    income_tax: Income tax
+    social_security: Social security
+    pension: Pension contribution
+    health: Health insurance
+
+invoice:
+  title: Invoice
+  invoice_number: Invoice no.
+  order_number: Order no.
+  bill_to: Bill to
+  from: From
+  tax_id: Tax ID
+  item: Item
+  payment_details: Payment details
+  bank_transfer: Bank transfer to
+  thanks: Thank you for your business!
+  items: [Website maintenance (monthly), Consulting services (hours), Office chair, Laptop stand, Printer toner cartridge, Software license (annual), Cloud hosting plan, Graphic design services, Translation services, Wireless keyboard, USB-C docking station, Delivery and installation]

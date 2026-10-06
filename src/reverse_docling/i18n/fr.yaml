@@ -1,0 +1,242 @@
+common:
+  page: Page
+  date: Date
+  description: Libellé
+  amount: Montant
+  currency: Devise
+  issue_date: Date d'émission
+  name: Nom
+  address: Adresse
+  date_of_birth: Date de naissance
+  place_of_birth: Lieu de naissance
+  nationality: Nationalité
+  phone: Téléphone
+  email: Courriel
+  total: Total
+  subtotal: Total HT
+  tax: TVA
+  signature: Signature
+  quantity: Qté
+  unit_price: Prix unitaire
+  reference: Référence
+  status: Statut
+  paid: Payé
+  unpaid: Non payé
+  due_date: Échéance
+  period: Période
+  discount: Remise
+
+brands:
+  words: [Horizon, Méridien, Azur, Lumière, Atlantique, Alpes, Provence, Riviera, Étoile, Loire, Sequoia, Bastide]
+  bank: ["Banque {word}", "Crédit {word}", "Caisse d'Épargne {word}", "{word} Banque Privée"]
+  airline: ["{word} Airlines", "Air {word}", "{word} Aviation"]
+  hotel: ["Hôtel {word}", "Grand Hôtel {word}", "Le {word} Hôtel & Spa", "Résidence {word}"]
+  utility: ["{word} Énergie", "Électricité {word}", "{word} Énergies Services"]
+  company: ["{word} Solutions SARL", "Groupe {word} SA", "{word} Technologies SAS"]
+  registry: [Service de l'état civil, Mairie – Officier de l'état civil, Bureau de l'état civil]
+
+airports:
+  JFK: New York
+  LAX: Los Angeles
+  LHR: Londres
+  CDG: Paris
+  FRA: Francfort
+  MAD: Madrid
+  DXB: Dubaï
+  RUH: Riyad
+  JED: Djeddah
+  SVO: Moscou
+  PEK: Pékin
+  PVG: Shanghai
+  NRT: Tokyo
+  GRU: São Paulo
+  DEL: New Delhi
+  BOM: Bombay
+
+bank_statement:
+  title: Relevé de compte
+  statement_no: Relevé n°
+  branch: Agence
+  account_holder: Titulaire du compte
+  account_number: Numéro de compte
+  account_type: Type de compte
+  customer_number: N° client
+  period: Période du relevé
+  reference: Référence
+  value_date: Date de valeur
+  debit: Débit
+  credit: Crédit
+  balance: Solde
+  opening_balance: Ancien solde
+  closing_balance: Nouveau solde
+  total_debits: Total des débits
+  total_credits: Total des crédits
+  legal: Nous vous invitons à vérifier ce relevé. Toute réclamation doit nous parvenir dans un délai de 30 jours. Dépôts garantis dans les limites réglementaires.
+  account_types: [Compte courant, Compte chèques, Livret d'épargne, Compte joint]
+  merchants: [Supérette du Coin, Pharmacie du Centre, Café de la Place, Station Relais, Transports urbains, Librairie Page, Primeur Bio, Brasserie du Port, Électro Plus, Bricolage & Jardin, Cinéma Rex, Boulangerie Dupain]
+  tx:
+    salary: "VIR SALAIRE {employer}"
+    card: "CB {merchant}"
+    grocery: "PAIEMENT CB {merchant}"
+    transfer_out: "VIR EMIS REF {ref}"
+    transfer_in: "VIR RECU REF {ref}"
+    atm: "RETRAIT DAB {ref}"
+    utility: "PRLV ELECTRICITE {ref}"
+    subscription: "PRLV ABONNEMENT {merchant}"
+    fee: "FRAIS DE TENUE DE COMPTE"
+
+flight_ticket:
+  title: Reçu de billet électronique
+  itinerary: Itinéraire
+  boarding_pass: Carte d'embarquement
+  passenger: Passager
+  booking_reference: Référence de réservation
+  ticket_number: Numéro de billet
+  frequent_flyer: N° de fidélité
+  issued_by: Émis par
+  flight: Vol
+  from: De
+  to: À
+  departure: Départ
+  arrival: Arrivée
+  terminal: Terminal
+  gate: Porte
+  seat: Siège
+  boarding_time: Embarquement
+  class: Classe
+  baggage: Bagages
+  status: Statut
+  fare: Tarif
+  taxes_fees: Taxes et surcharges
+  payment: Mode de paiement
+  notice: L'enregistrement ferme 60 minutes avant le départ. La porte ferme 20 minutes avant le départ. Munissez-vous d'une pièce d'identité valide.
+  payment_methods: [Carte bancaire, Carte de débit, Espèces, Virement, Agence de voyages]
+  cabins:
+    economy: Économique
+    premium: Premium Économique
+    business: Affaires
+    first: Première
+
+hotel_reservation:
+  title: Confirmation de réservation
+  voucher: Bon d'échange hôtelier
+  greeting: "Cher/Chère {name}, merci pour votre réservation. Nous serons ravis de vous accueillir."
+  confirmation_number: Numéro de confirmation
+  booking_reference: Référence de réservation
+  booking_date: Date de réservation
+  guest: Client
+  check_in: Arrivée
+  check_out: Départ
+  from_time: à partir de
+  until_time: jusqu'à
+  nights: Nuits
+  room_count: Chambres
+  room_type: Type de chambre
+  guests: Personnes
+  adults: adultes
+  children: enfants
+  board: Formule
+  rate_per_night: Prix par nuit
+  taxes: Taxes et taxe de séjour
+  total_price: Prix total
+  payment_status: Paiement
+  pay_at_hotel: Paiement à l'hôtel
+  cancellation: "Annulation gratuite jusqu'au {date}. Au-delà, la première nuit sera facturée."
+  contact: Contacter l'hôtel
+  streets: [rue de la République, avenue Victor Hugo, boulevard Saint-Michel, rue du Port, place de la Gare, quai des Arts, rue Nationale, avenue Jean Jaurès]
+  boards: [Logement seul, Petit-déjeuner inclus, Demi-pension, Pension complète, Tout compris]
+  rooms:
+    standard: Chambre double standard
+    deluxe: Chambre deluxe lit king-size
+    twin: Chambre supérieure lits jumeaux
+    suite: Suite junior
+    family: Chambre familiale
+
+birth_certificate:
+  title: Acte de naissance
+  subtitle: Copie intégrale
+  certificate_number: N° d'acte
+  registration_number: Registre n°
+  district: Commune
+  child: Enfant
+  full_name: Nom et prénoms
+  sex: Sexe
+  male: Masculin
+  female: Féminin
+  time_of_birth: Heure de naissance
+  hospital: Lieu d'accouchement
+  father: Père
+  mother: Mère
+  parents: Filiation
+  registration_date: Date de l'acte
+  registrar: Officier de l'état civil
+  certify: Copie certifiée conforme au registre des actes de l'état civil.
+  hospitals: [Centre hospitalier, Maternité Sainte-Anne, Clinique du Parc, Hôpital régional, CHU]
+  registrar_titles: [Officier de l'état civil, Adjoint au maire, Officier délégué]
+
+utility_bill:
+  title: Facture d'électricité
+  account_number: Référence client
+  invoice_number: N° de facture
+  meter_number: N° de compteur
+  customer: Titulaire du contrat
+  service_address: Adresse de consommation
+  billing_period: Période de facturation
+  amount_due: Montant à payer
+  pay_by: À régler avant le
+  meter_readings: Relevés du compteur
+  previous_reading: Ancien index
+  current_reading: Nouvel index
+  consumption: Consommation
+  charges: Détail de la facture
+  usage_history: Votre consommation (kWh)
+  customer_service: Service client
+  lines:
+    energy: Consommation d'électricité
+    network: Acheminement
+    fixed: Abonnement
+
+payslip:
+  title: Bulletin de paie
+  employer: Employeur
+  employee: Salarié
+  employee_id: Matricule
+  tax_id: N° de sécurité sociale
+  job_title: Emploi
+  department: Service
+  hire_date: Date d'entrée
+  pay_period: Période
+  pay_date: Date de paiement
+  bank_account: Versé sur le compte
+  earnings_title: Rémunération
+  deductions_title: Cotisations et retenues
+  gross_pay: Salaire brut
+  total_deductions: Total des retenues
+  net_pay: Net à payer
+  year_to_date: Cumul annuel
+  confidential: Confidentiel
+  departments: [Finance, Exploitation, Commercial, Ingénierie, Ressources humaines, Logistique, Service client, Marketing]
+  earnings:
+    basic: Salaire de base
+    housing: Indemnité de logement
+    transport: Indemnité de transport
+    overtime: Heures supplémentaires
+    bonus: Prime sur objectifs
+  deductions:
+    income_tax: Prélèvement à la source
+    social_security: Sécurité sociale
+    pension: Retraite complémentaire
+    health: Mutuelle
+
+invoice:
+  title: Facture
+  invoice_number: Facture n°
+  order_number: Commande n°
+  bill_to: Facturé à
+  from: Émetteur
+  tax_id: N° TVA intracommunautaire
+  item: Désignation
+  payment_details: Modalités de paiement
+  bank_transfer: Virement à
+  thanks: Merci de votre confiance !
+  items: [Maintenance site web (mensuel), Prestations de conseil (heures), Fauteuil de bureau, Support pour ordinateur portable, Cartouche de toner, Licence logicielle (annuelle), Hébergement cloud, Prestations de design graphique, Services de traduction, Clavier sans fil, Station d'accueil USB-C, Livraison et installation]

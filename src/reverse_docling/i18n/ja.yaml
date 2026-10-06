@@ -1,0 +1,242 @@
+common:
+  page: ページ
+  date: 日付
+  description: 摘要
+  amount: 金額
+  currency: 通貨
+  issue_date: 発行日
+  name: 氏名
+  address: 住所
+  date_of_birth: 生年月日
+  place_of_birth: 出生地
+  nationality: 国籍
+  phone: 電話番号
+  email: メールアドレス
+  total: 合計
+  subtotal: 小計
+  tax: 消費税
+  signature: 署名
+  quantity: 数量
+  unit_price: 単価
+  reference: 参照番号
+  status: ステータス
+  paid: 支払済
+  unpaid: 未払い
+  due_date: お支払期限
+  period: 期間
+  discount: 値引
+
+brands:
+  words: [若潮, 東都, 青葉, 桜川, 富士見, 若葉, 光陽, 藤ヶ丘, 雲雀, 白鷺, 北辰, 松風]
+  bank: ["{word}銀行", "{word}信用金庫", "{word}信託銀行", "株式会社{word}銀行"]
+  airline: ["{word}航空", "{word}エアライン", "{word}エア"]
+  hotel: ["ホテル{word}", "{word}グランドホテル", "{word}旅館", "{word}イン"]
+  utility: ["{word}電力株式会社", "{word}エナジー", "{word}電気"]
+  company: ["株式会社{word}", "{word}テクノロジー株式会社", "{word}商事株式会社"]
+  registry: [市役所市民課, 区役所戸籍住民課, 町役場住民課]
+
+airports:
+  JFK: ニューヨーク
+  LAX: ロサンゼルス
+  LHR: ロンドン
+  CDG: パリ
+  FRA: フランクフルト
+  MAD: マドリード
+  DXB: ドバイ
+  RUH: リヤド
+  JED: ジッダ
+  SVO: モスクワ
+  PEK: 北京
+  PVG: 上海
+  NRT: 東京（成田）
+  GRU: サンパウロ
+  DEL: デリー
+  BOM: ムンバイ
+
+bank_statement:
+  title: 取引明細書
+  statement_no: 明細書番号
+  branch: 支店
+  account_holder: 口座名義
+  account_number: 口座番号
+  account_type: 預金種目
+  customer_number: お客さま番号
+  period: 対象期間
+  reference: 取引番号
+  value_date: 取引日
+  debit: お支払金額
+  credit: お預り金額
+  balance: 差引残高
+  opening_balance: 前回残高
+  closing_balance: 今回残高
+  total_debits: お支払合計
+  total_credits: お預り合計
+  legal: 本明細書の内容をご確認ください。ご不明な点がございましたら30日以内にお取引店までお問い合わせください。
+  account_types: [普通預金, 当座預金, 貯蓄預金, 総合口座]
+  merchants: [まちかどマート, さくら薬局, カフェ青空, 駅前ガソリンスタンド, 市営交通, 文海堂書店, 生鮮市場, 定食屋ふじ, デンキの森, ホームセンター匠, シネマ光, ベーカリー麦]
+  tx:
+    salary: "給与振込 {employer}"
+    card: "カード {merchant}"
+    grocery: "デビット {merchant}"
+    transfer_out: "振込 {ref}"
+    transfer_in: "振込入金 {ref}"
+    atm: "ATM出金 {ref}"
+    utility: "口座振替 電気料金 {ref}"
+    subscription: "口座振替 {merchant}"
+    fee: "口座管理手数料"
+
+flight_ticket:
+  title: eチケットお客様控え
+  itinerary: 旅程
+  boarding_pass: 搭乗券
+  passenger: ご搭乗者
+  booking_reference: 予約番号
+  ticket_number: 航空券番号
+  frequent_flyer: マイレージ会員番号
+  issued_by: 発行
+  flight: 便名
+  from: 出発地
+  to: 到着地
+  departure: 出発
+  arrival: 到着
+  terminal: ターミナル
+  gate: 搭乗口
+  seat: 座席
+  boarding_time: 搭乗開始
+  class: クラス
+  baggage: 手荷物
+  status: ステータス
+  fare: 運賃
+  taxes_fees: 税金・料金
+  payment: お支払方法
+  notice: チェックインは出発60分前に締め切ります。搭乗口は出発20分前に締め切ります。有効な旅券をご持参ください。
+  payment_methods: [クレジットカード, デビットカード, 現金, 銀行振込, 旅行代理店]
+  cabins:
+    economy: エコノミークラス
+    premium: プレミアムエコノミー
+    business: ビジネスクラス
+    first: ファーストクラス
+
+hotel_reservation:
+  title: ご予約確認書
+  voucher: 宿泊クーポン
+  greeting: "{name} 様　このたびはご予約いただき誠にありがとうございます。ご来館を心よりお待ちしております。"
+  confirmation_number: 確認番号
+  booking_reference: 予約番号
+  booking_date: 予約日
+  guest: 宿泊者
+  check_in: チェックイン
+  check_out: チェックアウト
+  from_time: から
+  until_time: まで
+  nights: 泊数
+  room_count: 部屋数
+  room_type: 客室タイプ
+  guests: 人数
+  adults: 大人
+  children: 子供
+  board: 食事
+  rate_per_night: 1泊料金
+  taxes: 税・サービス料
+  total_price: 合計料金
+  payment_status: お支払状況
+  pay_at_hotel: 現地払い
+  cancellation: "{date}まではキャンセル無料です。それ以降は1泊分の料金を申し受けます。"
+  contact: ホテルへのお問い合わせ
+  streets: [中央通り, 駅前通り, 本町, 桜通り, 港町, 栄町, 大通り, 緑町]
+  boards: [素泊まり, 朝食付き, 2食付き, 3食付き, オールインクルーシブ]
+  rooms:
+    standard: スタンダードダブル
+    deluxe: デラックスキング
+    twin: スーペリアツイン
+    suite: ジュニアスイート
+    family: ファミリールーム
+
+birth_certificate:
+  title: 出生届受理証明書
+  subtitle: 出生の届出を受理したことを証明する
+  certificate_number: 証明番号
+  registration_number: 受理番号
+  district: 届出地
+  child: 子の情報
+  full_name: 氏名
+  sex: 性別
+  male: 男
+  female: 女
+  time_of_birth: 出生時刻
+  hospital: 出生した施設
+  father: 父
+  mother: 母
+  parents: 父母の情報
+  registration_date: 受理年月日
+  registrar: 市区町村長
+  certify: 上記の届出を受理したことを証明します。
+  hospitals: [市立総合病院, さくら産婦人科医院, 県立中央病院, 大学病院, 赤ちゃんクリニック]
+  registrar_titles: [市長, 区長, 町長]
+
+utility_bill:
+  title: 電気料金のお知らせ
+  account_number: お客さま番号
+  invoice_number: 請求番号
+  meter_number: 計器番号
+  customer: ご契約者
+  service_address: ご使用場所
+  billing_period: ご使用期間
+  amount_due: ご請求金額
+  pay_by: お支払期限
+  meter_readings: 検針結果
+  previous_reading: 前回指示数
+  current_reading: 今回指示数
+  consumption: ご使用量
+  charges: 料金内訳
+  usage_history: ご使用量の推移（kWh）
+  customer_service: お客さまセンター
+  lines:
+    energy: 電力量料金
+    network: 再エネ発電賦課金
+    fixed: 基本料金
+
+payslip:
+  title: 給与明細書
+  employer: 会社名
+  employee: 氏名
+  employee_id: 社員番号
+  tax_id: マイナンバー
+  job_title: 役職
+  department: 所属
+  hire_date: 入社日
+  pay_period: 対象期間
+  pay_date: 支給日
+  bank_account: 振込口座
+  earnings_title: 支給
+  deductions_title: 控除
+  gross_pay: 総支給額
+  total_deductions: 控除合計
+  net_pay: 差引支給額
+  year_to_date: 年間累計
+  confidential: 親展
+  departments: [経理部, 業務部, 営業部, 技術部, 人事部, 物流部, カスタマーサポート部, マーケティング部]
+  earnings:
+    basic: 基本給
+    housing: 住宅手当
+    transport: 通勤手当
+    overtime: 時間外手当
+    bonus: 業績手当
+  deductions:
+    income_tax: 所得税
+    social_security: 厚生年金保険
+    pension: 雇用保険
+    health: 健康保険
+
+invoice:
+  title: 請求書
+  invoice_number: 請求書番号
+  order_number: 注文番号
+  bill_to: ご請求先
+  from: 発行元
+  tax_id: 登録番号
+  item: 品目
+  payment_details: お振込先
+  bank_transfer: 振込先口座
+  thanks: 毎度ありがとうございます。
+  items: [ウェブサイト保守（月額）, コンサルティング（時間）, オフィスチェア, ノートPCスタンド, トナーカートリッジ, ソフトウェアライセンス（年額）, クラウドホスティング, グラフィックデザイン, 翻訳サービス, ワイヤレスキーボード, USB-Cドッキングステーション, 配送・設置費]

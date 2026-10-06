@@ -1,0 +1,49 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block style %}
+body { font-size: 9pt; }
+.hdr { border-top: 8px solid {{ s.primary }}; padding-top: 8px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; }
+.hdr h1 { margin: 0; font-size: 13pt; }
+.blk { border: 1px solid #bbb; margin-top: 12px; }
+.blk .t { background: #eee; padding: 4px 8px; font-weight: 700; font-size: 8.5pt; text-transform: uppercase; }
+.blk .c { padding: 6px 8px; }
+.kv { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 16px; }
+.kv span:nth-child(odd) { color: #555; }
+.lines td { padding: 3px 8px; border-bottom: 1px dotted #ccc; }
+.big { font-size: 16pt; font-weight: 800; color: {{ s.primary }}; }
+.slip { margin-top: 26px; border-top: 2px dashed #888; padding-top: 10px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; font-size: 8.5pt; }
+.slip b { display: block; font-size: 10pt; }
+{% endblock %}
+{% block body %}
+<div class="hdr">{{ s.logo }}<div><h1>{{ doc.provider }}</h1><div class="muted">{{ t('utility_bill.title') }}</div></div>
+  <div style="text-align:end">{{ t('utility_bill.amount_due') }}<div class="big">{{ fmt.money(doc.total) }}</div></div></div>
+
+<div class="blk"><div class="t">{{ t('utility_bill.customer') }}</div><div class="c kv">
+  <span>{{ t('common.name') }}</span><span>{{ doc.customer_name }}</span>
+  <span>{{ t('utility_bill.service_address') }}</span><span>{{ doc.service_address }}</span>
+  <span>{{ t('utility_bill.account_number') }}</span><span class="ltr">{{ doc.account_number }}</span>
+  <span>{{ t('utility_bill.billing_period') }}</span><span>{{ fmt.date(doc.period_start, 'short') }} – {{ fmt.date(doc.period_end, 'short') }}</span>
+  <span>{{ t('common.issue_date') }}</span><span>{{ fmt.date(doc.issue_date, 'short') }}</span>
+  <span>{{ t('common.due_date') }}</span><span><strong>{{ fmt.date(doc.due_date, 'short') }}</strong></span>
+</div></div>
+
+<div class="blk"><div class="t">{{ t('utility_bill.meter_readings') }} · <span class="ltr">{{ doc.meter_number }}</span></div><div class="c kv">
+  <span>{{ t('utility_bill.previous_reading') }}</span><span>{{ fmt.number(doc.previous_reading) }}</span>
+  <span>{{ t('utility_bill.current_reading') }}</span><span>{{ fmt.number(doc.current_reading) }}</span>
+  <span>{{ t('utility_bill.consumption') }}</span><span><strong>{{ fmt.number(doc.consumption_kwh) }} kWh</strong></span>
+</div></div>
+
+<div class="blk"><div class="t">{{ t('utility_bill.charges') }}</div>
+  <table class="lines">
+    {% for line in doc.lines %}<tr><td>{{ line.label }}</td><td class="num">{{ fmt.money(line.amount, symbol=False) }}</td></tr>{% endfor %}
+    <tr><td>{{ t('common.tax') }} {{ fmt.number(doc.tax_rate * 100) }}%</td><td class="num">{{ fmt.money(doc.tax, symbol=False) }}</td></tr>
+    <tr><td><strong>{{ t('common.total') }} ({{ doc.currency }})</strong></td><td class="num"><strong>{{ fmt.money(doc.total, symbol=False) }}</strong></td></tr>
+  </table>
+</div>
+
+<div class="slip">
+  <div>{{ t('utility_bill.account_number') }}<b class="ltr">{{ doc.account_number }}</b></div>
+  <div>{{ t('utility_bill.pay_by') }}<b>{{ fmt.date(doc.due_date) }}</b></div>
+  <div>{{ t('utility_bill.amount_due') }}<b>{{ fmt.money(doc.total) }}</b></div>
+</div>
+{% endblock %}

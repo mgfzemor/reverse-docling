@@ -1,0 +1,42 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block meta %}<meta name="rdock-footer" content="off">{% endblock %}
+{% block style %}
+.hd { display: grid; grid-template-columns: 1fr auto; border-bottom: 2px solid #000; padding-bottom: 8px; }
+.hd .org { font-weight: 700; font-size: 11pt; }
+.hd h1 { font-size: 15pt; margin: 10px 0 0; text-transform: uppercase; }
+.box { border: 1px solid #000; padding: 4px 8px; text-align: center; font-size: 8pt; }
+.box b { display: block; font-size: 11pt; }
+table.f { margin-top: 14px; }
+table.f td { border: 1px solid #000; padding: 5px 7px; vertical-align: top; }
+table.f td.n { width: 8mm; text-align: center; background: #eee; font-weight: 700; }
+table.f td.l { width: 55mm; font-size: 8pt; color: #333; background: #f7f7f7; }
+table.f td.v { font-size: 10.5pt; }
+table.f tr.sec td { background: #ddd; font-weight: 700; text-transform: uppercase; font-size: 8.5pt; }
+.foot { display: grid; grid-template-columns: 1fr auto; margin-top: 18px; align-items: end; gap: 20px; }
+.sig { border-top: 1px solid #000; padding-top: 3px; text-align: center; font-size: 8.5pt; margin-top: 40px; }
+{% endblock %}
+{% block body %}
+<div class="hd">
+  <div><div class="org">{{ doc.registry }}</div><div class="muted">{{ t('birth_certificate.district') }}: {{ doc.district }}</div>
+    <h1>{{ t('birth_certificate.title') }}</h1><div class="small">{{ t('birth_certificate.subtitle') }}</div></div>
+  <div class="box">{{ t('birth_certificate.certificate_number') }}<b class="ltr">{{ doc.certificate_number }}</b></div>
+</div>
+<table class="f">
+  <tr class="sec"><td colspan="3">{{ t('birth_certificate.child') }}</td></tr>
+  <tr><td class="n">1</td><td class="l">{{ t('birth_certificate.full_name') }}</td><td class="v">{{ doc.child_name }}{% if doc.child_latin_name != doc.child_name|upper %}<br><span class="small ltr">{{ doc.child_latin_name }}</span>{% endif %}</td></tr>
+  <tr><td class="n">2</td><td class="l">{{ t('birth_certificate.sex') }}</td><td class="v">{{ doc.sex }}</td></tr>
+  <tr><td class="n">3</td><td class="l">{{ t('common.date_of_birth') }}</td><td class="v">{{ fmt.date(doc.date_of_birth, 'short') }} — {{ fmt.time(doc.time_of_birth) }}</td></tr>
+  <tr><td class="n">4</td><td class="l">{{ t('common.place_of_birth') }}</td><td class="v">{{ doc.place_of_birth }}</td></tr>
+  <tr><td class="n">5</td><td class="l">{{ t('birth_certificate.hospital') }}</td><td class="v">{{ doc.hospital }}</td></tr>
+  <tr class="sec"><td colspan="3">{{ t('birth_certificate.parents') }}</td></tr>
+  <tr><td class="n">6</td><td class="l">{{ t('birth_certificate.father') }}</td><td class="v">{{ doc.father_name }} ({{ doc.father_nationality }})</td></tr>
+  <tr><td class="n">7</td><td class="l">{{ t('birth_certificate.mother') }}</td><td class="v">{{ doc.mother_name }} ({{ doc.mother_nationality }})</td></tr>
+  <tr class="sec"><td colspan="3">{{ t('birth_certificate.registrar') }}</td></tr>
+  <tr><td class="n">8</td><td class="l">{{ t('birth_certificate.registration_number') }}</td><td class="v ltr">{{ doc.registration_number }}</td></tr>
+  <tr><td class="n">9</td><td class="l">{{ t('birth_certificate.registration_date') }}</td><td class="v">{{ fmt.date(doc.registration_date, 'short') }}</td></tr>
+  <tr><td class="n">10</td><td class="l">{{ t('common.issue_date') }}</td><td class="v">{{ fmt.date(doc.issue_date, 'short') }}</td></tr>
+</table>
+<p class="small">{{ t('birth_certificate.certify') }}</p>
+<div class="foot"><div>{{ s.seal }}</div><div class="sig" style="width:70mm">{{ doc.registrar }} — {{ t('common.signature') }}</div></div>
+{% endblock %}

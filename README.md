@@ -1,6 +1,6 @@
-# reverse-dockling
+# reverse-docling
 
-[Docling](https://github.com/docling-project/docling) turns documents into Markdown for AI. **reverse-dockling**
+[Docling](https://github.com/docling-project/docling) turns documents into Markdown for AI. **reverse-docling**
 goes the other way: from a persona it renders realistic documents (bank statements, flight tickets, hotel
 reservations, birth certificates, …) in many languages, as a PDF or page images, optionally degraded to look
 like a bad scan. Every document comes with a labelled manifest record, so you can use the output directly to
@@ -92,7 +92,7 @@ IDs/IBANs in `<span class="ltr">` inside RTL pages. Page setup goes in `{% block
 **Add a doc type.** Create `doctypes/<name>.py` with a `DocType` subclass whose `build(ctx)` returns a dict,
 and export it as `DOC_TYPE = MyType()`. Add its labels to every `i18n/*.yaml`, then add templates.
 
-**Add a language.** Register it in [locales.py](src/reverse_dockling/locales.py) (Faker locale, Babel locale,
+**Add a language.** Register it in [locales.py](src/reverse_docling/locales.py) (Faker locale, Babel locale,
 direction, currency, font stack) and add `i18n/<code>.yaml` with the same keys as `en.yaml`. Tests check that
 every key is covered.
 

@@ -1,0 +1,42 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block style %}
+body { font-family: 'Noto Serif', Georgia, {{ font_stack | safe }}; font-size: 9pt; }
+.bar { background: {{ s.primary }}; color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; }
+.bar .n { font-size: 16pt; font-weight: 700; }
+.boxes { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid #333; border-top: none; }
+.boxes > div { padding: 8px 10px; border-inline-end: 1px solid #333; }
+.boxes > div:last-child { border: none; }
+.boxes .l { font-size: 7pt; text-transform: uppercase; color: #555; font-weight: 700; margin-bottom: 3px; }
+.items { margin-top: 14px; border: 1px solid #333; }
+.items th { background: #333; color: #fff; padding: 5px; font-size: 8pt; }
+.items td { padding: 5px; border-bottom: 1px solid #ccc; border-inline-end: 1px solid #ccc; }
+.sum { display: grid; grid-template-columns: 1fr 70mm; margin-top: 12px; gap: 14px; }
+.sum .note { border: 1px dashed #888; padding: 8px; font-size: 8pt; }
+.sum table td { border: 1px solid #333; padding: 4px 6px; }
+.sum tr.g td { background: {{ s.light }}; font-weight: 700; font-size: 11pt; }
+{% endblock %}
+{% block body %}
+<div class="bar"><div style="display:flex;gap:10px;align-items:center">{{ s.logo }}<div><div class="n">{{ doc.seller }}</div><div class="small">{{ doc.seller_address }}</div></div></div>
+  <div style="text-align:end"><div class="n">{{ t('invoice.title') }}</div><div class="ltr">{{ doc.invoice_number }}</div></div></div>
+<div class="boxes">
+  <div><div class="l">{{ t('invoice.from') }}</div>{{ doc.seller }}<br>{{ t('invoice.tax_id') }}: <span class="ltr">{{ doc.seller_tax_id }}</span><br><span class="ltr small">{{ doc.seller_email }}</span></div>
+  <div><div class="l">{{ t('invoice.bill_to') }}</div><strong>{{ doc.buyer_name }}</strong><br>{{ doc.buyer_address }}</div>
+  <div><div class="l">{{ t('common.date') }}</div>{{ fmt.date(doc.issue_date, 'long') }}
+    <div class="l" style="margin-top:6px">{{ t('common.due_date') }}</div>{{ fmt.date(doc.due_date, 'long') }}
+    <div class="l" style="margin-top:6px">{{ t('common.status') }}</div>{{ t('common.paid') if doc.paid else t('common.unpaid') }}</div>
+</div>
+<table class="items">
+  <thead><tr><th>#</th><th>{{ t('common.description') }}</th><th class="num">{{ t('common.quantity') }}</th><th class="num">{{ t('common.unit_price') }}</th><th class="num">{{ t('common.amount') }}</th></tr></thead>
+  <tbody>{% for it in doc.line_items %}<tr><td>{{ loop.index }}</td><td>{{ it.description }}</td><td class="num">{{ it.quantity }}</td><td class="num">{{ fmt.money(it.unit_price, symbol=False) }}</td><td class="num">{{ fmt.money(it.amount, symbol=False) }}</td></tr>{% endfor %}</tbody>
+</table>
+<div class="sum">
+  <div class="note"><strong>{{ t('invoice.payment_details') }}</strong><br>{{ t('invoice.bank_transfer') }}:<br><span class="ltr">{{ doc.seller_iban }}</span><br>{{ t('invoice.order_number') }}: <span class="ltr">{{ doc.order_number }}</span><br><br>{{ t('invoice.thanks') }}</div>
+  <table>
+    <tr><td>{{ t('common.subtotal') }}</td><td class="num">{{ fmt.money(doc.subtotal, symbol=False) }}</td></tr>
+    <tr><td>{{ t('common.discount') }}</td><td class="num">{{ fmt.money(doc.discount, symbol=False) }}</td></tr>
+    <tr><td>{{ t('common.tax') }} {{ fmt.number(doc.tax_rate * 100) }}%</td><td class="num">{{ fmt.money(doc.tax, symbol=False) }}</td></tr>
+    <tr class="g"><td>{{ t('common.total') }} {{ doc.currency }}</td><td class="num">{{ fmt.money(doc.total, symbol=False) }}</td></tr>
+  </table>
+</div>
+{% endblock %}

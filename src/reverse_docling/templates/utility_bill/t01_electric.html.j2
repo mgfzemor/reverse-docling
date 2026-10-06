@@ -1,0 +1,66 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% set peak = doc.history | max %}
+{% block style %}
+.top { display: flex; justify-content: space-between; align-items: flex-start; }
+.top .brand { display: flex; gap: 10px; align-items: center; font-size: 15pt; font-weight: 700; color: {{ s.primary }}; }
+.top .meta td { padding: 1px 0 1px 12px; font-size: 8.5pt; }
+.top .meta td:first-child { color: #666; }
+.addr { margin: 18px 0; }
+.due { display: flex; gap: 14px; }
+.due > div { flex: 1; border-radius: 8px; padding: 12px 14px; }
+.due .a { background: {{ s.primary }}; color: #fff; }
+.due .b { background: {{ s.light }}; }
+.due .l { font-size: 8pt; text-transform: uppercase; opacity: .85; }
+.due .v { font-size: 18pt; font-weight: 800; }
+h2 { font-size: 10pt; text-transform: uppercase; color: {{ s.primary }}; margin: 18px 0 6px; }
+.tbl th { font-size: 8pt; color: #555; border-bottom: 1px solid #999; padding: 4px; }
+.tbl td { padding: 5px 4px; border-bottom: 1px solid #eee; }
+.tbl tr.tot td { font-weight: 700; border-top: 2px solid #333; border-bottom: none; }
+.cols { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
+.chart { display: flex; align-items: flex-end; gap: 6px; height: 90px; border-bottom: 1px solid #999; padding: 0 4px; }
+.chart div { flex: 1; background: {{ s.primary }}; opacity: .35; border-radius: 3px 3px 0 0; }
+.chart div:last-child { opacity: 1; }
+.foot { margin-top: 18px; font-size: 7.5pt; color: #666; border-top: 1px solid #ddd; padding-top: 6px; }
+{% endblock %}
+{% block body %}
+<div class="top">
+  <div class="brand">{{ s.logo }}{{ doc.provider }}</div>
+  <table class="meta">
+    <tr><td>{{ t('utility_bill.invoice_number') }}</td><td class="ltr">{{ doc.invoice_number }}</td></tr>
+    <tr><td>{{ t('utility_bill.account_number') }}</td><td class="ltr">{{ doc.account_number }}</td></tr>
+    <tr><td>{{ t('common.issue_date') }}</td><td>{{ fmt.date(doc.issue_date) }}</td></tr>
+  </table>
+</div>
+<div class="addr"><strong>{{ t('utility_bill.title') }}</strong><br>{{ doc.customer_name }}<br>{{ doc.service_address }}</div>
+
+<div class="due">
+  <div class="a"><div class="l">{{ t('utility_bill.amount_due') }}</div><div class="v">{{ fmt.money(doc.total) }}</div></div>
+  <div class="b"><div class="l">{{ t('utility_bill.pay_by') }}</div><div class="v">{{ fmt.date(doc.due_date, 'medium') }}</div></div>
+  <div class="b"><div class="l">{{ t('utility_bill.billing_period') }}</div><div style="font-weight:700;margin-top:6px">{{ fmt.date(doc.period_start) }} – {{ fmt.date(doc.period_end) }}</div></div>
+</div>
+
+<div class="cols">
+  <div>
+    <h2>{{ t('utility_bill.charges') }}</h2>
+    <table class="tbl">
+      {% for line in doc.lines %}<tr><td>{{ line.label }}<br><span class="small muted ltr">{{ line.detail }}</span></td><td class="num">{{ fmt.money(line.amount) }}</td></tr>{% endfor %}
+      <tr><td>{{ t('common.subtotal') }}</td><td class="num">{{ fmt.money(doc.subtotal) }}</td></tr>
+      <tr><td>{{ t('common.tax') }} ({{ fmt.number(doc.tax_rate * 100) }}%)</td><td class="num">{{ fmt.money(doc.tax) }}</td></tr>
+      <tr class="tot"><td>{{ t('common.total') }}</td><td class="num">{{ fmt.money(doc.total) }}</td></tr>
+    </table>
+  </div>
+  <div>
+    <h2>{{ t('utility_bill.meter_readings') }}</h2>
+    <table class="tbl">
+      <tr><td>{{ t('utility_bill.meter_number') }}</td><td class="num ltr">{{ doc.meter_number }}</td></tr>
+      <tr><td>{{ t('utility_bill.previous_reading') }}</td><td class="num">{{ fmt.number(doc.previous_reading) }}</td></tr>
+      <tr><td>{{ t('utility_bill.current_reading') }}</td><td class="num">{{ fmt.number(doc.current_reading) }}</td></tr>
+      <tr class="tot"><td>{{ t('utility_bill.consumption') }}</td><td class="num">{{ fmt.number(doc.consumption_kwh) }} kWh</td></tr>
+    </table>
+    <h2>{{ t('utility_bill.usage_history') }}</h2>
+    <div class="chart">{% for v in doc.history %}<div style="height: {{ (v / peak * 100) | round(0) }}%"></div>{% endfor %}</div>
+  </div>
+</div>
+<div class="foot">{{ t('utility_bill.customer_service') }}: <span class="ltr">{{ doc.provider_phone }}</span></div>
+{% endblock %}

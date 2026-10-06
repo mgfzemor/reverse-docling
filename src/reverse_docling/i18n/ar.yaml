@@ -1,0 +1,242 @@
+common:
+  page: صفحة
+  date: التاريخ
+  description: البيان
+  amount: المبلغ
+  currency: العملة
+  issue_date: تاريخ الإصدار
+  name: الاسم
+  address: العنوان
+  date_of_birth: تاريخ الميلاد
+  place_of_birth: مكان الميلاد
+  nationality: الجنسية
+  phone: الهاتف
+  email: البريد الإلكتروني
+  total: الإجمالي
+  subtotal: المجموع الفرعي
+  tax: ضريبة القيمة المضافة
+  signature: التوقيع
+  quantity: الكمية
+  unit_price: سعر الوحدة
+  reference: المرجع
+  status: الحالة
+  paid: مدفوع
+  unpaid: غير مدفوع
+  due_date: تاريخ الاستحقاق
+  period: الفترة
+  discount: الخصم
+
+brands:
+  words: [الأفق, الواحة, النخيل, الهلال, الرمال, السنابل, الصحراء, اللؤلؤة, المدينة, الشروق, النجمة, الريادة]
+  bank: ["بنك {word} الوطني", "مصرف {word}", "بنك {word} للاستثمار", "بنك {word}"]
+  airline: ["طيران {word}", "خطوط {word} الجوية", "{word} للطيران"]
+  hotel: ["فندق {word} الكبير", "فندق {word}", "أجنحة {word}", "منتجع {word}"]
+  utility: ["شركة {word} للكهرباء", "{word} للطاقة", "شركة {word} للخدمات"]
+  company: ["شركة {word} للتجارة", "مجموعة {word}", "{word} للحلول التقنية"]
+  registry: [إدارة الأحوال المدنية, مكتب تسجيل المواليد, وكالة الأحوال المدنية]
+
+airports:
+  JFK: نيويورك
+  LAX: لوس أنجلوس
+  LHR: لندن
+  CDG: باريس
+  FRA: فرانكفورت
+  MAD: مدريد
+  DXB: دبي
+  RUH: الرياض
+  JED: جدة
+  SVO: موسكو
+  PEK: بكين
+  PVG: شنغهاي
+  NRT: طوكيو
+  GRU: ساو باولو
+  DEL: نيودلهي
+  BOM: مومباي
+
+bank_statement:
+  title: كشف حساب
+  statement_no: رقم الكشف
+  branch: الفرع
+  account_holder: صاحب الحساب
+  account_number: رقم الحساب
+  account_type: نوع الحساب
+  customer_number: رقم العميل
+  period: فترة الكشف
+  reference: المرجع
+  value_date: تاريخ القيمة
+  debit: مدين
+  credit: دائن
+  balance: الرصيد
+  opening_balance: الرصيد الافتتاحي
+  closing_balance: الرصيد الختامي
+  total_debits: إجمالي المدين
+  total_credits: إجمالي الدائن
+  legal: يرجى مراجعة هذا الكشف فور استلامه وإبلاغ البنك عن أي اختلاف خلال 30 يوماً من تاريخه.
+  account_types: [حساب جاري, حساب توفير, حساب جاري مميز, حساب رواتب]
+  merchants: [أسواق الندى, صيدلية الشفاء, مقهى الياسمين, محطة وقود الطريق, مكتبة المعرفة, هايبر الوفرة, مطعم البيت الشامي, متجر الإلكترونيات الحديثة, سوق الخضار المركزي, كافيه الرياض, مخبز الشام, مركز الحياة]
+  tx:
+    salary: "إيداع راتب - {employer}"
+    card: "شراء عبر البطاقة {merchant}"
+    grocery: "نقاط بيع {merchant}"
+    transfer_out: "حوالة صادرة مرجع {ref}"
+    transfer_in: "حوالة واردة مرجع {ref}"
+    atm: "سحب نقدي صراف آلي {ref}"
+    utility: "سداد فاتورة كهرباء {ref}"
+    subscription: "اشتراك {merchant}"
+    fee: "رسوم إدارة حساب شهرية"
+
+flight_ticket:
+  title: إيصال تذكرة إلكترونية
+  itinerary: خط سير الرحلة
+  boarding_pass: بطاقة صعود الطائرة
+  passenger: المسافر
+  booking_reference: رقم الحجز
+  ticket_number: رقم التذكرة
+  frequent_flyer: رقم عضوية المسافر الدائم
+  issued_by: صادرة من
+  flight: الرحلة
+  from: من
+  to: إلى
+  departure: المغادرة
+  arrival: الوصول
+  terminal: صالة
+  gate: البوابة
+  seat: المقعد
+  boarding_time: وقت الصعود
+  class: الدرجة
+  baggage: الأمتعة
+  status: الحالة
+  fare: الأجرة
+  taxes_fees: الضرائب والرسوم
+  payment: طريقة الدفع
+  notice: يغلق تسجيل الوصول قبل 60 دقيقة من موعد المغادرة وتغلق البوابة قبل 20 دقيقة. يرجى حمل وثيقة سفر سارية.
+  payment_methods: [بطاقة ائتمان, بطاقة مدى, نقداً, تحويل بنكي, وكالة سفر]
+  cabins:
+    economy: الدرجة السياحية
+    premium: السياحية المميزة
+    business: درجة الأعمال
+    first: الدرجة الأولى
+
+hotel_reservation:
+  title: تأكيد الحجز
+  voucher: قسيمة فندقية
+  greeting: "عزيزنا {name}، نشكركم على حجزكم ونتطلع إلى استقبالكم."
+  confirmation_number: رقم التأكيد
+  booking_reference: مرجع الحجز
+  booking_date: تاريخ الحجز
+  guest: النزيل
+  check_in: تسجيل الدخول
+  check_out: تسجيل المغادرة
+  from_time: من الساعة
+  until_time: حتى الساعة
+  nights: الليالي
+  room_count: الغرف
+  room_type: نوع الغرفة
+  guests: الضيوف
+  adults: بالغين
+  children: أطفال
+  board: الوجبات
+  rate_per_night: سعر الليلة
+  taxes: الضرائب والرسوم
+  total_price: السعر الإجمالي
+  payment_status: حالة الدفع
+  pay_at_hotel: الدفع في الفندق
+  cancellation: "الإلغاء مجاني حتى {date}، وبعد ذلك تُحتسب رسوم الليلة الأولى."
+  contact: للتواصل مع الفندق
+  streets: [طريق الملك فهد, شارع العليا, طريق الكورنيش, شارع التحلية, شارع الأمير سلطان, طريق المطار, شارع الستين, طريق الملك عبدالله]
+  boards: [بدون وجبات, مع الإفطار, نصف إقامة, إقامة كاملة, شامل كلياً]
+  rooms:
+    standard: غرفة مزدوجة قياسية
+    deluxe: غرفة ديلوكس بسرير كبير
+    twin: غرفة مميزة بسريرين
+    suite: جناح جونيور
+    family: غرفة عائلية
+
+birth_certificate:
+  title: شهادة ميلاد
+  subtitle: صورة مصدقة من قيد الميلاد
+  certificate_number: رقم الشهادة
+  registration_number: رقم القيد
+  district: جهة التسجيل
+  child: بيانات المولود
+  full_name: الاسم الكامل
+  sex: الجنس
+  male: ذكر
+  female: أنثى
+  time_of_birth: وقت الولادة
+  hospital: جهة الولادة
+  father: الأب
+  mother: الأم
+  parents: بيانات الوالدين
+  registration_date: تاريخ التسجيل
+  registrar: أمين السجل
+  certify: أشهد بأن هذه صورة طبق الأصل من القيد المسجل في سجل المواليد لدى هذه الإدارة.
+  hospitals: [مستشفى الولادة والأطفال, المستشفى العام, مدينة الملك فهد الطبية, مستشفى الحمادي, المستشفى الجامعي]
+  registrar_titles: [أمين سجل المواليد, مدير الأحوال المدنية, مساعد أمين السجل]
+
+utility_bill:
+  title: فاتورة كهرباء
+  account_number: رقم الحساب
+  invoice_number: رقم الفاتورة
+  meter_number: رقم العداد
+  customer: المشترك
+  service_address: عنوان الخدمة
+  billing_period: فترة الفاتورة
+  amount_due: المبلغ المستحق
+  pay_by: يرجى السداد قبل
+  meter_readings: قراءات العداد
+  previous_reading: القراءة السابقة
+  current_reading: القراءة الحالية
+  consumption: الاستهلاك
+  charges: تفاصيل الرسوم
+  usage_history: استهلاكك (كيلوواط ساعة)
+  customer_service: خدمة العملاء
+  lines:
+    energy: قيمة الاستهلاك
+    network: رسوم الشبكة والتوزيع
+    fixed: رسوم العداد الثابتة
+
+payslip:
+  title: مسير راتب
+  employer: جهة العمل
+  employee: الموظف
+  employee_id: الرقم الوظيفي
+  tax_id: رقم الهوية
+  job_title: المسمى الوظيفي
+  department: الإدارة
+  hire_date: تاريخ التعيين
+  pay_period: فترة الراتب
+  pay_date: تاريخ الصرف
+  bank_account: الحساب المحوّل إليه
+  earnings_title: الاستحقاقات
+  deductions_title: الاستقطاعات
+  gross_pay: إجمالي الراتب
+  total_deductions: إجمالي الاستقطاعات
+  net_pay: صافي الراتب
+  year_to_date: منذ بداية العام
+  confidential: سري وشخصي
+  departments: [المالية, العمليات, المبيعات, الهندسة, الموارد البشرية, الخدمات اللوجستية, خدمة العملاء, التسويق]
+  earnings:
+    basic: الراتب الأساسي
+    housing: بدل سكن
+    transport: بدل نقل
+    overtime: عمل إضافي
+    bonus: مكافأة أداء
+  deductions:
+    income_tax: ضريبة الدخل
+    social_security: التأمينات الاجتماعية
+    pension: اشتراك التقاعد
+    health: التأمين الطبي
+
+invoice:
+  title: فاتورة ضريبية
+  invoice_number: رقم الفاتورة
+  order_number: رقم الطلب
+  bill_to: فاتورة إلى
+  from: من
+  tax_id: الرقم الضريبي
+  item: الصنف
+  payment_details: تفاصيل الدفع
+  bank_transfer: تحويل بنكي إلى
+  thanks: شكراً لتعاملكم معنا
+  items: [صيانة الموقع الإلكتروني (شهري), خدمات استشارية (ساعات), كرسي مكتب, حامل حاسب محمول, خرطوشة حبر طابعة, ترخيص برنامج (سنوي), خطة استضافة سحابية, خدمات تصميم جرافيك, خدمات ترجمة, لوحة مفاتيح لاسلكية, محطة توصيل USB-C, التوصيل والتركيب]

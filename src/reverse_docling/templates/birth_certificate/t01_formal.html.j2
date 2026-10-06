@@ -1,0 +1,52 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block meta %}<meta name="rdock-paper" content="A4"><meta name="rdock-footer" content="off"><meta name="rdock-margin" content="10mm">{% endblock %}
+{% block style %}
+body { font-family: 'Noto Serif', Georgia, {{ font_stack | safe }}; }
+.cert { border: 6px double {{ s.primary }}; padding: 14mm 14mm; min-height: 270mm; position: relative;
+  background: radial-gradient(circle at 50% 45%, rgba(0,0,0,.025) 0 30%, transparent 31%), repeating-linear-gradient(45deg, rgba(0,0,0,.012) 0 2px, transparent 2px 6px); }
+.hd { text-align: center; }
+.hd .reg { font-size: 11pt; letter-spacing: 1px; text-transform: uppercase; color: {{ s.primary }}; }
+.hd h1 { font-size: 26pt; margin: 8px 0 2px; color: {{ s.primary }}; }
+.hd .sub { font-style: italic; color: #444; }
+.nums { display: flex; justify-content: space-between; margin: 18px 0; font-size: 9.5pt; }
+h2 { font-size: 11pt; color: {{ s.primary }}; border-bottom: 1px solid {{ s.primary }}; padding-bottom: 3px; margin: 22px 0 8px; text-transform: uppercase; letter-spacing: .5px; }
+.row { display: grid; grid-template-columns: 45mm 1fr; padding: 6px 0; border-bottom: 1px dotted #999; }
+.row .l { color: #444; }
+.row .v { font-size: 11.5pt; font-weight: 600; font-family: 'Courier New', {{ font_stack | safe }}; }
+.certify { margin-top: 26px; font-style: italic; font-size: 10pt; }
+.sign { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px; }
+.sign .line { border-top: 1px solid #222; width: 65mm; text-align: center; padding-top: 4px; font-size: 9pt; }
+{% endblock %}
+{% block body %}
+<div class="cert">
+  <div class="hd">
+    <div class="reg">{{ doc.registry }} · {{ doc.district }}</div>
+    <h1>{{ t('birth_certificate.title') }}</h1>
+    <div class="sub">{{ t('birth_certificate.subtitle') }}</div>
+  </div>
+  <div class="nums">
+    <div>{{ t('birth_certificate.certificate_number') }}: <strong class="ltr">{{ doc.certificate_number }}</strong></div>
+    <div>{{ t('birth_certificate.registration_number') }}: <strong class="ltr">{{ doc.registration_number }}</strong></div>
+  </div>
+
+  <h2>{{ t('birth_certificate.child') }}</h2>
+  <div class="row"><div class="l">{{ t('birth_certificate.full_name') }}</div><div class="v">{{ doc.child_name }}</div></div>
+  <div class="row"><div class="l">{{ t('birth_certificate.sex') }}</div><div class="v">{{ doc.sex }}</div></div>
+  <div class="row"><div class="l">{{ t('common.date_of_birth') }}</div><div class="v">{{ fmt.date(doc.date_of_birth, 'long') }}</div></div>
+  <div class="row"><div class="l">{{ t('birth_certificate.time_of_birth') }}</div><div class="v">{{ fmt.time(doc.time_of_birth) }}</div></div>
+  <div class="row"><div class="l">{{ t('common.place_of_birth') }}</div><div class="v">{{ doc.hospital }}, {{ doc.place_of_birth }}</div></div>
+
+  <h2>{{ t('birth_certificate.parents') }}</h2>
+  <div class="row"><div class="l">{{ t('birth_certificate.father') }}</div><div class="v">{{ doc.father_name }}</div></div>
+  <div class="row"><div class="l">{{ t('common.nationality') }}</div><div class="v">{{ doc.father_nationality }}</div></div>
+  <div class="row"><div class="l">{{ t('birth_certificate.mother') }}</div><div class="v">{{ doc.mother_name }}</div></div>
+  <div class="row"><div class="l">{{ t('common.nationality') }}</div><div class="v">{{ doc.mother_nationality }}</div></div>
+
+  <div class="row" style="margin-top:14px"><div class="l">{{ t('birth_certificate.registration_date') }}</div><div class="v">{{ fmt.date(doc.registration_date, 'long') }}</div></div>
+  <div class="row"><div class="l">{{ t('common.issue_date') }}</div><div class="v">{{ fmt.date(doc.issue_date, 'long') }}</div></div>
+
+  <div class="certify">{{ t('birth_certificate.certify') }}</div>
+  <div class="sign">{{ s.seal }}<div class="line">{{ doc.registrar }}<br>{{ t('common.signature') }}</div></div>
+</div>
+{% endblock %}

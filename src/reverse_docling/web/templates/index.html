@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>reverse-docling</title>
+<style>
+  :root { --bg: #f6f7f9; --card: #fff; --text: #1d2330; --muted: #667085; --line: #e3e6eb; --accent: #2f5bea; --err: #b42318; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111418; --card: #1a1e24; --text: #e6e8eb; --muted: #98a2b3; --line: #2c323b; --accent: #7b9cff; --err: #f97066; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.45 system-ui, -apple-system, Segoe UI, sans-serif; background: var(--bg); color: var(--text); }
+  header { padding: 18px 24px; border-bottom: 1px solid var(--line); background: var(--card); }
+  header h1 { margin: 0; font-size: 18px; }
+  header p { margin: 2px 0 0; color: var(--muted); }
+  main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; padding: 20px 24px; max-width: 1400px; margin: 0 auto; }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; padding: 16px; } }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+  label.f { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+  input[type=text], input[type=date], input[type=number], input[type=email], select {
+    font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; width: 100%; }
+  .chk { display: inline-flex; align-items: center; gap: 6px; margin: 0 12px 6px 0; cursor: pointer; }
+  .doctype { border-top: 1px solid var(--line); padding: 8px 0; }
+  .doctype:first-of-type { border-top: none; }
+  .doctype .tpls { margin: 4px 0 0 24px; color: var(--muted); }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+  .seg button { border: none; background: transparent; color: var(--text); padding: 6px 14px; cursor: pointer; font: inherit; }
+  .seg button.on { background: var(--accent); color: #fff; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .btn { font: inherit; border: 1px solid var(--accent); background: var(--accent); color: #fff; padding: 9px 16px; border-radius: 8px; cursor: pointer; }
+  .btn.ghost { background: transparent; color: var(--accent); }
+  .btn:disabled { opacity: .5; cursor: wait; }
+  #status { color: var(--muted); }
+  #status.err { color: var(--err); }
+  #preview img { width: 100%; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+  #preview .meta { color: var(--muted); font-size: 12px; margin-bottom: 8px; word-break: break-all; }
+  .hidden { display: none; }
+  .aside { position: sticky; top: 16px; align-self: start; }
+</style>
+</head>
+<body>
+<header>
+  <h1>reverse-docling</h1>
+  <p>Generate synthetic, labelled documents for classifier training.</p>
+</header>
+<main>
+<form id="form" onsubmit="return false">
+  <section>
+    <h2>Identity</h2>
+    <div class="seg" id="mode">
+      <button type="button" data-mode="random" class="on">Random per document</button>
+      <button type="button" data-mode="manual">Manual persona</button>
+    </div>
+    <div id="manual" class="hidden">
+      <p style="margin:0 0 10px;color:var(--muted)">Fields left empty are filled with locale-appropriate fake data.</p>
+      <div class="grid">
+        <label class="f">Full name<input type="text" name="full_name"></label>
+        <label class="f">Gender<select name="gender"><option value="">random</option><option>male</option><option>female</option></select></label>
+        <label class="f">Date of birth<input type="date" name="date_of_birth"></label>
+        <label class="f">Place of birth<input type="text" name="place_of_birth"></label>
+        <label class="f">Nationality<input type="text" name="nationality"></label>
+        <label class="f">Phone<input type="text" name="phone"></label>
+        <label class="f">Email<input type="email" name="email"></label>
+        <label class="f">ID number<input type="text" name="id_number"></label>
+        <label class="f">Passport number<input type="text" name="passport_number"></label>
+        <label class="f">Father's name<input type="text" name="father_name"></label>
+        <label class="f">Mother's name<input type="text" name="mother_name"></label>
+        <label class="f">Employer<input type="text" name="employer"></label>
+        <label class="f">Job title<input type="text" name="job_title"></label>
+        <label class="f">IBAN<input type="text" name="iban"></label>
+        <label class="f">Street<input type="text" name="addr.street"></label>
+        <label class="f">Number<input type="text" name="addr.building_number"></label>
+        <label class="f">City<input type="text" name="addr.city"></label>
+        <label class="f">State / region<input type="text" name="addr.state"></label>
+        <label class="f">Postcode<input type="text" name="addr.postcode"></label>
+        <label class="f">Country<input type="text" name="addr.country"></label>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Documents &amp; templates</h2>
+    {% for name, tpls in catalog.items() %}
+    <div class="doctype">
+      <label class="chk"><input type="checkbox" class="dt" value="{{ name }}" {% if loop.first %}checked{% endif %}> <strong>{{ name.replace('_', ' ') }}</strong></label>
+      {% set first = loop.first %}
+      <div class="tpls">{% for t in tpls %}<label class="chk"><input type="checkbox" class="tpl" data-dt="{{ name }}" value="{{ t }}" {% if first %}checked{% endif %}> {{ t }}</label>{% endfor %}</div>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>Languages</h2>
+    {% for code, lang in languages.items() %}
+    <label class="chk"><input type="checkbox" class="lang" value="{{ code }}" {% if code == 'en' %}checked{% endif %}> {{ lang.name }} <span style="color:var(--muted)">({{ code }})</span></label>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>Output &amp; quality</h2>
+    <div class="grid">
+      <label class="f">Format<select name="format"><option value="pdf">Single PDF</option><option value="images">Page images</option></select></label>
+      <label class="f">Image type<select name="image_format"><option>png</option><option>jpg</option></select></label>
+      <label class="f">DPI<input type="number" name="dpi" value="150" min="50" max="600"></label>
+      <label class="f">Samples per combination<input type="number" name="count" value="1" min="1" max="100"></label>
+      <label class="f">Degradation<select name="preset">{% for p in presets %}<option>{{ p }}</option>{% endfor %}</select></label>
+      <label class="f">Degrade probability<input type="number" name="probability" value="1" min="0" max="1" step="0.1"></label>
+      <label class="f">Seed<input type="number" name="seed" value="0"></label>
+      <label class="f" style="justify-content:flex-end"><span class="chk"><input type="checkbox" name="specimen"> SPECIMEN watermark</span></label>
+    </div>
+  </section>
+</form>
+
+<div class="aside">
+  <section>
+    <h2>Run</h2>
+    <div class="actions">
+      <button class="btn ghost" id="btn-preview" type="button">Preview first page</button>
+      <button class="btn" id="btn-generate" type="button">Generate &amp; download zip</button>
+      <span id="status"></span>
+    </div>
+  </section>
+  <section id="preview" class="hidden">
+    <h2>Preview</h2>
+    <div class="meta" id="preview-meta"></div>
+    <img id="preview-img" alt="Rendered first page preview">
+  </section>
+</div>
+</main>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+let mode = "random";
+
+$$("#mode button").forEach(b => b.addEventListener("click", () => {
+  mode = b.dataset.mode;
+  $$("#mode button").forEach(x => x.classList.toggle("on", x === b));
+  $("#manual").classList.toggle("hidden", mode !== "manual");
+}));
+
+function payload() {
+  const f = $("#form");
+  const v = n => f.elements[n].value.trim();
+  const identity = { mode };
+  if (mode === "manual") {
+    const address = {};
+    $$("#manual [name]").forEach(el => {
+      const val = el.value.trim();
+      if (!val) return;
+      if (el.name.startsWith("addr.")) address[el.name.slice(5)] = val;
+      else identity[el.name] = val;
+    });
+    if (Object.keys(address).length) identity.address = address;
+  }
+  const documents = $$(".dt:checked").map(dt => ({
+    type: dt.value,
+    templates: $$(`.tpl[data-dt="${dt.value}"]:checked`).map(t => t.value),
+  })).filter(d => d.templates.length);
+  return {
+    seed: Number(v("seed")) || 0,
+    identity,
+    count_per_combination: Number(v("count")) || 1,
+    documents,
+    languages: $$(".lang:checked").map(l => l.value),
+    output: { format: v("format"), image_format: v("image_format"), dpi: Number(v("dpi")) || 150 },
+    degradation: { preset: v("preset"), probability: Number(v("probability")) },
+    specimen_watermark: f.elements["specimen"].checked,
+  };
+}
+
+function setStatus(text, err = false) {
+  $("#status").textContent = text;
+  $("#status").classList.toggle("err", err);
+}
+
+async function call(url, body) {
+  const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  if (!res.ok) {
+    let detail = res.statusText;
+    try { detail = (await res.json()).detail; } catch {}
+    throw new Error(typeof detail === "string" ? detail : JSON.stringify(detail));
+  }
+  return res;
+}
+
+function busy(on) { $$(".actions .btn").forEach(b => b.disabled = on); }
+
+$("#btn-preview").addEventListener("click", async () => {
+  busy(true); setStatus("Rendering…");
+  try {
+    const data = await (await call("/api/preview", payload())).json();
+    $("#preview").classList.remove("hidden");
+    $("#preview-img").src = data.image;
+    const deg = data.degradation ? " · degradation: " + Object.keys(data.degradation).join(", ") : "";
+    $("#preview-meta").textContent = `${data.id} · ${data.identity} · ${data.pages} page(s)${deg}`;
+    setStatus(`${data.total_documents} document(s) in this request`);
+  } catch (e) { setStatus(e.message, true); }
+  busy(false);
+});
+
+$("#btn-generate").addEventListener("click", async () => {
+  busy(true); setStatus("Generating… this can take a while");
+  try {
+    const blob = await (await call("/api/generate", payload())).blob();
+    const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: "reverse-docling.zip" });
+    a.click(); URL.revokeObjectURL(a.href);
+    setStatus("Done — zip downloaded");
+  } catch (e) { setStatus(e.message, true); }
+  busy(false);
+});
+
+// Unchecking every template of a doc type unchecks the type, and vice versa.
+$$(".dt").forEach(dt => dt.addEventListener("change", () =>
+  $$(`.tpl[data-dt="${dt.value}"]`).forEach(t => t.checked = dt.checked)));
+$$(".tpl").forEach(t => t.addEventListener("change", () => {
+  const dt = $(`.dt[value="${t.dataset.dt}"]`);
+  dt.checked = $$(`.tpl[data-dt="${t.dataset.dt}"]:checked`).length > 0;
+}));
+</script>
+</body>
+</html>

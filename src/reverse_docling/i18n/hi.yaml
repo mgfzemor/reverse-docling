@@ -1,0 +1,242 @@
+common:
+  page: पृष्ठ
+  date: दिनांक
+  description: विवरण
+  amount: राशि
+  currency: मुद्रा
+  issue_date: जारी करने की तिथि
+  name: नाम
+  address: पता
+  date_of_birth: जन्म तिथि
+  place_of_birth: जन्म स्थान
+  nationality: राष्ट्रीयता
+  phone: फ़ोन
+  email: ईमेल
+  total: कुल
+  subtotal: उप-योग
+  tax: जीएसटी
+  signature: हस्ताक्षर
+  quantity: मात्रा
+  unit_price: इकाई मूल्य
+  reference: संदर्भ
+  status: स्थिति
+  paid: भुगतान किया गया
+  unpaid: बकाया
+  due_date: देय तिथि
+  period: अवधि
+  discount: छूट
+
+brands:
+  words: [सूर्या, गंगा, हिमालय, कमल, संगम, प्रगति, आकाश, सागर, मधुबन, नवभारत, उदय, अमृत]
+  bank: ["{word} बैंक", "{word} सहकारी बैंक", "{word} ग्रामीण बैंक", "{word} नेशनल बैंक"]
+  airline: ["{word} एयरवेज़", "{word} एयर", "फ्लाई {word}"]
+  hotel: ["होटल {word}", "{word} पैलेस", "{word} रेज़िडेंसी", "{word} ग्रैंड"]
+  utility: ["{word} विद्युत वितरण निगम", "{word} पावर लिमिटेड", "{word} ऊर्जा"]
+  company: ["{word} सॉल्यूशंस प्रा. लि.", "{word} इंडस्ट्रीज़ लि.", "{word} टेक्नोलॉजीज़"]
+  registry: [जन्म एवं मृत्यु पंजीकरण कार्यालय, नगर निगम – जन्म पंजीकरण, ग्राम पंचायत पंजीकरण कार्यालय]
+
+airports:
+  JFK: न्यूयॉर्क
+  LAX: लॉस एंजिल्स
+  LHR: लंदन
+  CDG: पेरिस
+  FRA: फ्रैंकफर्ट
+  MAD: मैड्रिड
+  DXB: दुबई
+  RUH: रियाद
+  JED: जेद्दा
+  SVO: मॉस्को
+  PEK: बीजिंग
+  PVG: शंघाई
+  NRT: टोक्यो
+  GRU: साओ पाउलो
+  DEL: नई दिल्ली
+  BOM: मुंबई
+
+bank_statement:
+  title: खाता विवरण
+  statement_no: विवरण सं.
+  branch: शाखा
+  account_holder: खाताधारक
+  account_number: खाता संख्या
+  account_type: खाते का प्रकार
+  customer_number: ग्राहक आईडी
+  period: विवरण अवधि
+  reference: संदर्भ सं.
+  value_date: मूल्य तिथि
+  debit: नामे
+  credit: जमा
+  balance: शेष
+  opening_balance: प्रारंभिक शेष
+  closing_balance: अंतिम शेष
+  total_debits: कुल नामे
+  total_credits: कुल जमा
+  legal: कृपया इस विवरण की जाँच करें। किसी भी विसंगति की सूचना 30 दिनों के भीतर अपनी शाखा को दें।
+  account_types: [बचत खाता, चालू खाता, वेतन खाता, सावधि जमा खाता]
+  merchants: [किराना स्टोर, आरोग्य मेडिकल, चाय कॉफ़ी हाउस, हाईवे पेट्रोल पंप, मेट्रो रेल, ज्ञान पुस्तक भंडार, ताज़ा सब्ज़ी मंडी, शर्मा भोजनालय, इलेक्ट्रॉनिक्स बाज़ार, गृह निर्माण केंद्र, सिनेमा हॉल, मिठाई भंडार]
+  tx:
+    salary: "वेतन जमा {employer}"
+    card: "कार्ड खरीद {merchant}"
+    grocery: "पीओएस {merchant}"
+    transfer_out: "यूपीआई भुगतान {ref}"
+    transfer_in: "एनईएफ़टी जमा {ref}"
+    atm: "एटीएम निकासी {ref}"
+    utility: "बिजली बिल भुगतान {ref}"
+    subscription: "सदस्यता {merchant}"
+    fee: "खाता रखरखाव शुल्क"
+
+flight_ticket:
+  title: ई-टिकट रसीद
+  itinerary: यात्रा कार्यक्रम
+  boarding_pass: बोर्डिंग पास
+  passenger: यात्री
+  booking_reference: पीएनआर
+  ticket_number: टिकट संख्या
+  frequent_flyer: फ़्रीक्वेंट फ़्लायर सं.
+  issued_by: जारीकर्ता
+  flight: उड़ान
+  from: से
+  to: तक
+  departure: प्रस्थान
+  arrival: आगमन
+  terminal: टर्मिनल
+  gate: गेट
+  seat: सीट
+  boarding_time: बोर्डिंग समय
+  class: श्रेणी
+  baggage: सामान
+  status: स्थिति
+  fare: किराया
+  taxes_fees: कर एवं शुल्क
+  payment: भुगतान का तरीका
+  notice: चेक-इन प्रस्थान से 60 मिनट पहले बंद हो जाता है। गेट प्रस्थान से 20 मिनट पहले बंद हो जाता है। कृपया वैध पहचान पत्र साथ रखें।
+  payment_methods: [क्रेडिट कार्ड, डेबिट कार्ड, नकद, यूपीआई, ट्रैवल एजेंसी]
+  cabins:
+    economy: इकोनॉमी
+    premium: प्रीमियम इकोनॉमी
+    business: बिज़नेस
+    first: फ़र्स्ट
+
+hotel_reservation:
+  title: बुकिंग पुष्टि
+  voucher: होटल वाउचर
+  greeting: "प्रिय {name}, आपकी बुकिंग के लिए धन्यवाद। हम आपके स्वागत की प्रतीक्षा कर रहे हैं।"
+  confirmation_number: पुष्टि संख्या
+  booking_reference: बुकिंग संदर्भ
+  booking_date: बुकिंग तिथि
+  guest: अतिथि
+  check_in: चेक-इन
+  check_out: चेक-आउट
+  from_time: से
+  until_time: तक
+  nights: रातें
+  room_count: कमरे
+  room_type: कमरे का प्रकार
+  guests: अतिथि संख्या
+  adults: वयस्क
+  children: बच्चे
+  board: भोजन योजना
+  rate_per_night: प्रति रात दर
+  taxes: कर एवं शुल्क
+  total_price: कुल मूल्य
+  payment_status: भुगतान स्थिति
+  pay_at_hotel: होटल में भुगतान
+  cancellation: "{date} तक निःशुल्क रद्दीकरण। उसके बाद पहली रात का शुल्क लिया जाएगा।"
+  contact: होटल से संपर्क करें
+  streets: [महात्मा गांधी मार्ग, स्टेशन रोड, नेहरू नगर, सिविल लाइंस, मॉल रोड, राजपथ, गांधी चौक, सुभाष मार्ग]
+  boards: [केवल कमरा, नाश्ते सहित, आंशिक भोजन, पूर्ण भोजन, सब कुछ शामिल]
+  rooms:
+    standard: स्टैंडर्ड डबल रूम
+    deluxe: डीलक्स किंग रूम
+    twin: सुपीरियर ट्विन रूम
+    suite: जूनियर सुइट
+    family: फ़ैमिली रूम
+
+birth_certificate:
+  title: जन्म प्रमाण पत्र
+  subtitle: जन्म पंजीकरण रजिस्टर से उद्धरण
+  certificate_number: प्रमाण पत्र सं.
+  registration_number: पंजीकरण सं.
+  district: पंजीकरण इकाई
+  child: बच्चे का विवरण
+  full_name: पूरा नाम
+  sex: लिंग
+  male: पुरुष
+  female: स्त्री
+  time_of_birth: जन्म का समय
+  hospital: जन्म स्थल
+  father: पिता का नाम
+  mother: माता का नाम
+  parents: माता-पिता का विवरण
+  registration_date: पंजीकरण तिथि
+  registrar: रजिस्ट्रार
+  certify: प्रमाणित किया जाता है कि यह जानकारी जन्म पंजीकरण रजिस्टर में दर्ज प्रविष्टि के अनुसार है।
+  hospitals: [ज़िला अस्पताल, सरकारी मातृत्व अस्पताल, सिटी नर्सिंग होम, सामुदायिक स्वास्थ्य केंद्र, मेडिकल कॉलेज अस्पताल]
+  registrar_titles: [रजिस्ट्रार (जन्म एवं मृत्यु), उप रजिस्ट्रार, ज़िला रजिस्ट्रार]
+
+utility_bill:
+  title: बिजली बिल
+  account_number: उपभोक्ता संख्या
+  invoice_number: बिल संख्या
+  meter_number: मीटर संख्या
+  customer: उपभोक्ता
+  service_address: कनेक्शन का पता
+  billing_period: बिलिंग अवधि
+  amount_due: देय राशि
+  pay_by: अंतिम भुगतान तिथि
+  meter_readings: मीटर रीडिंग
+  previous_reading: पिछली रीडिंग
+  current_reading: वर्तमान रीडिंग
+  consumption: खपत
+  charges: शुल्क विवरण
+  usage_history: आपकी खपत (यूनिट)
+  customer_service: ग्राहक सेवा
+  lines:
+    energy: ऊर्जा शुल्क
+    network: वितरण शुल्क
+    fixed: स्थायी शुल्क
+
+payslip:
+  title: वेतन पर्ची
+  employer: नियोक्ता
+  employee: कर्मचारी
+  employee_id: कर्मचारी कोड
+  tax_id: पैन
+  job_title: पद
+  department: विभाग
+  hire_date: नियुक्ति तिथि
+  pay_period: वेतन अवधि
+  pay_date: भुगतान तिथि
+  bank_account: बैंक खाता
+  earnings_title: आय
+  deductions_title: कटौतियाँ
+  gross_pay: सकल वेतन
+  total_deductions: कुल कटौती
+  net_pay: शुद्ध वेतन
+  year_to_date: वर्ष में अब तक
+  confidential: गोपनीय
+  departments: [वित्त, संचालन, बिक्री, अभियांत्रिकी, मानव संसाधन, लॉजिस्टिक्स, ग्राहक सेवा, विपणन]
+  earnings:
+    basic: मूल वेतन
+    housing: मकान किराया भत्ता
+    transport: परिवहन भत्ता
+    overtime: ओवरटाइम
+    bonus: प्रदर्शन बोनस
+  deductions:
+    income_tax: आयकर (टीडीएस)
+    social_security: भविष्य निधि
+    pension: पेंशन अंशदान
+    health: स्वास्थ्य बीमा
+
+invoice:
+  title: कर बीजक
+  invoice_number: बीजक सं.
+  order_number: ऑर्डर सं.
+  bill_to: प्राप्तकर्ता
+  from: विक्रेता
+  tax_id: जीएसटीआईएन
+  item: वस्तु / सेवा
+  payment_details: भुगतान विवरण
+  bank_transfer: बैंक हस्तांतरण
+  thanks: आपके व्यवसाय के लिए धन्यवाद!
+  items: [वेबसाइट रखरखाव (मासिक), परामर्श सेवाएँ (घंटे), कार्यालय कुर्सी, लैपटॉप स्टैंड, प्रिंटर टोनर, सॉफ़्टवेयर लाइसेंस (वार्षिक), क्लाउड होस्टिंग योजना, ग्राफ़िक डिज़ाइन सेवाएँ, अनुवाद सेवाएँ, वायरलेस कीबोर्ड, यूएसबी-सी डॉकिंग स्टेशन, डिलीवरी और इंस्टॉलेशन]

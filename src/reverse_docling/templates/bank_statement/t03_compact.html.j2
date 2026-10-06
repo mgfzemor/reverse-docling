@@ -1,0 +1,57 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block meta %}<meta name="rdock-paper" content="A4">{% endblock %}
+{% block style %}
+body { font-size: 8pt; }
+.mono { font-family: 'Noto Sans Mono', Menlo, Consolas, monospace, {{ font_stack | safe }}; }
+.top { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; border-bottom: 3px solid {{ s.primary }}; padding-bottom: 6px; }
+.top .name { font-size: 12pt; font-weight: 700; color: {{ s.primary }}; }
+.addr { margin: 26px 0 16px; line-height: 1.45; }
+.info { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid #ccc; margin-bottom: 10px; }
+.info div { padding: 4px 6px; border-inline-end: 1px solid #ccc; }
+.info div:last-child { border-inline-end: none; }
+.info b { display: block; font-size: 6.5pt; color: #666; font-weight: normal; text-transform: uppercase; }
+.tx th { font-size: 7pt; border-bottom: 1px solid #000; padding: 2px 3px; }
+.tx td { padding: 1.5px 3px; }
+.tot td { border-top: 1px solid #000; font-weight: bold; padding-top: 4px; }
+{% endblock %}
+{% block body %}
+<div class="top">
+  {{ s.logo }}
+  <div><div class="name">{{ doc.bank_name }}</div><div class="muted">{{ doc.branch }}</div></div>
+  <div style="text-align:end"><strong>{{ t('bank_statement.title') }}</strong><br>
+    <span class="mono">#{{ doc.statement_number }}/{{ doc.period_end.year }}</span></div>
+</div>
+
+<div class="addr">
+  {{ person.full_name }}<br>
+  {{ person.address.street }} {{ person.address.building_number }}<br>
+  {{ person.address.postcode }} {{ person.address.city }}<br>
+  {{ person.address.country }}
+</div>
+
+<div class="info">
+  <div><b>{{ t('bank_statement.account_number') }}</b><span class="mono ltr">{{ doc.account_number }}</span></div>
+  <div><b>{{ t('bank_statement.account_type') }}</b>{{ doc.account_type }}</div>
+  <div><b>{{ t('bank_statement.period') }}</b>{{ fmt.date(doc.period_start, 'short') }} – {{ fmt.date(doc.period_end, 'short') }}</div>
+  <div><b>{{ t('common.issue_date') }}</b>{{ fmt.date(doc.statement_date, 'short') }}</div>
+</div>
+
+<table class="tx">
+  <thead><tr><th>{{ t('bank_statement.value_date') }}</th><th>{{ t('common.description') }}</th>
+    <th class="num">{{ t('bank_statement.debit') }}</th><th class="num">{{ t('bank_statement.credit') }}</th></tr></thead>
+  <tbody class="mono">
+    <tr><td></td><td>{{ t('bank_statement.opening_balance') }}</td><td></td><td class="num">{{ fmt.money(doc.opening_balance, symbol=False) }}</td></tr>
+    {% for tx in doc.transactions %}
+    <tr><td class="nowrap">{{ fmt.date(tx.date, 'short') }}</td><td>{{ tx.description }}</td>
+      <td class="num">{{ fmt.money(tx.debit, symbol=False) if tx.debit else '' }}</td>
+      <td class="num">{{ fmt.money(tx.credit, symbol=False) if tx.credit else '' }}</td></tr>
+    {% endfor %}
+    <tr class="tot"><td></td><td>{{ t('common.total') }} ({{ doc.currency }})</td>
+      <td class="num">{{ fmt.money(doc.total_debit, symbol=False) }}</td><td class="num">{{ fmt.money(doc.total_credit, symbol=False) }}</td></tr>
+    <tr class="tot"><td></td><td>{{ t('bank_statement.closing_balance') }}</td><td></td>
+      <td class="num">{{ fmt.money(doc.closing_balance, symbol=False) }}</td></tr>
+  </tbody>
+</table>
+<p class="small muted">{{ t('bank_statement.legal') }}</p>
+{% endblock %}

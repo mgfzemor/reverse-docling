@@ -1,0 +1,59 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block style %}
+.head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 4px solid {{ s.primary }}; }
+.head .brand { display: flex; gap: 10px; align-items: center; font-size: 17pt; font-weight: 700; color: {{ s.primary }}; }
+.head h1 { margin: 0; font-size: 12pt; text-align: end; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 16px; margin: 14px 0; padding: 10px 12px; background: {{ s.light }}; }
+.grid .l { font-size: 7.5pt; color: #555; text-transform: uppercase; }
+.grid .v { font-weight: 600; }
+h2 { font-size: 10.5pt; margin: 18px 0 6px; color: {{ s.primary }}; text-transform: uppercase; letter-spacing: .5px; }
+.seg th { font-size: 7.5pt; text-transform: uppercase; color: #555; border-bottom: 1px solid #999; padding: 4px; }
+.seg td { padding: 6px 4px; border-bottom: 1px solid #ddd; }
+.code { font-size: 12pt; font-weight: 700; }
+.fare { width: 50%; margin-inline-start: auto; margin-top: 10px; }
+.fare td { padding: 3px 4px; }
+.fare tr:last-child td { border-top: 2px solid #222; font-weight: 700; }
+.notice { margin-top: 20px; font-size: 7.5pt; color: #555; border: 1px dashed #aaa; padding: 8px; }
+{% endblock %}
+{% block body %}
+<div class="head">
+  <div class="brand">{{ s.logo }}{{ doc.airline }}</div>
+  <h1>{{ t('flight_ticket.title') }}</h1>
+</div>
+
+<div class="grid">
+  <div><div class="l">{{ t('flight_ticket.passenger') }}</div><div class="v ltr">{{ doc.passenger_name }}</div></div>
+  <div><div class="l">{{ t('flight_ticket.booking_reference') }}</div><div class="v ltr">{{ doc.pnr }}</div></div>
+  <div><div class="l">{{ t('flight_ticket.ticket_number') }}</div><div class="v ltr">{{ doc.ticket_number }}</div></div>
+  <div><div class="l">{{ t('common.issue_date') }}</div><div class="v">{{ fmt.date(doc.issue_date) }}</div></div>
+  <div><div class="l">{{ t('flight_ticket.issued_by') }}</div><div class="v">{{ doc.airline }} – {{ doc.issuing_office }}</div></div>
+  <div><div class="l">{{ t('flight_ticket.frequent_flyer') }}</div><div class="v ltr">{{ doc.frequent_flyer or '—' }}</div></div>
+</div>
+
+<h2>{{ t('flight_ticket.itinerary') }}</h2>
+<table class="seg">
+  <thead><tr><th>{{ t('flight_ticket.flight') }}</th><th>{{ t('flight_ticket.departure') }}</th><th>{{ t('flight_ticket.arrival') }}</th>
+    <th>{{ t('flight_ticket.class') }}</th><th>{{ t('flight_ticket.seat') }}</th><th>{{ t('flight_ticket.baggage') }}</th><th>{{ t('flight_ticket.status') }}</th></tr></thead>
+  <tbody>
+  {% for seg in doc.segments %}
+    <tr>
+      <td><span class="code ltr">{{ seg.flight }}</span></td>
+      <td><span class="code">{{ seg.from_code }}</span> {{ seg.from_city }}<br>{{ fmt.date(seg.departure.date()) }} {{ fmt.time(seg.departure) }}<br>
+        <span class="small muted">{{ t('flight_ticket.terminal') }} {{ seg.terminal }}</span></td>
+      <td><span class="code">{{ seg.to_code }}</span> {{ seg.to_city }}<br>{{ fmt.date(seg.arrival.date()) }} {{ fmt.time(seg.arrival) }}</td>
+      <td>{{ seg.cabin }} ({{ seg.booking_class }})</td><td>{{ seg.seat }}</td><td>{{ seg.baggage }}</td><td>{{ seg.status }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<table class="fare">
+  <tr><td>{{ t('flight_ticket.fare') }}</td><td class="num">{{ fmt.money(doc.fare) }}</td></tr>
+  <tr><td>{{ t('flight_ticket.taxes_fees') }}</td><td class="num">{{ fmt.money(doc.taxes) }}</td></tr>
+  <tr><td>{{ t('flight_ticket.payment') }}</td><td class="num">{{ doc.payment }}</td></tr>
+  <tr><td>{{ t('common.total') }}</td><td class="num">{{ fmt.money(doc.total) }}</td></tr>
+</table>
+
+<div class="notice">{{ t('flight_ticket.notice') }}</div>
+{% endblock %}

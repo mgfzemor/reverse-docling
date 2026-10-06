@@ -1,0 +1,242 @@
+common:
+  page: Página
+  date: Data
+  description: Descrição
+  amount: Valor
+  currency: Moeda
+  issue_date: Data de emissão
+  name: Nome
+  address: Endereço
+  date_of_birth: Data de nascimento
+  place_of_birth: Local de nascimento
+  nationality: Nacionalidade
+  phone: Telefone
+  email: E-mail
+  total: Total
+  subtotal: Subtotal
+  tax: Impostos
+  signature: Assinatura
+  quantity: Qtd.
+  unit_price: Valor unitário
+  reference: Referência
+  status: Situação
+  paid: Pago
+  unpaid: Em aberto
+  due_date: Vencimento
+  period: Período
+  discount: Desconto
+
+brands:
+  words: [Horizonte, Ventania, Atlântico, Ipê, Aurora, Pantanal, Serra Azul, Jacarandá, Vitória, Primavera, Tropical, Paraná]
+  bank: ["Banco {word}", "Banco {word} S.A.", "{word} Banco Múltiplo", "Caixa {word}"]
+  airline: ["{word} Linhas Aéreas", "Voe {word}", "{word} Air"]
+  hotel: ["Hotel {word}", "Grande Hotel {word}", "{word} Palace Hotel", "Pousada {word}"]
+  utility: ["{word} Energia", "Companhia Energética {word}", "{word} Distribuidora de Energia"]
+  company: ["{word} Soluções Ltda.", "{word} Comércio e Serviços Ltda.", "{word} Tecnologia S.A."]
+  registry: [Cartório de Registro Civil das Pessoas Naturais, Ofício do Registro Civil, Registro Civil do Distrito]
+
+airports:
+  JFK: Nova York
+  LAX: Los Angeles
+  LHR: Londres
+  CDG: Paris
+  FRA: Frankfurt
+  MAD: Madri
+  DXB: Dubai
+  RUH: Riad
+  JED: Jidá
+  SVO: Moscou
+  PEK: Pequim
+  PVG: Xangai
+  NRT: Tóquio
+  GRU: São Paulo
+  DEL: Nova Délhi
+  BOM: Mumbai
+
+bank_statement:
+  title: Extrato de Conta Corrente
+  statement_no: Extrato nº
+  branch: Agência
+  account_holder: Titular
+  account_number: Conta
+  account_type: Tipo de conta
+  customer_number: Código do cliente
+  period: Período
+  reference: Documento
+  value_date: Data mov.
+  debit: Débito
+  credit: Crédito
+  balance: Saldo
+  opening_balance: Saldo anterior
+  closing_balance: Saldo final
+  total_debits: Total de débitos
+  total_credits: Total de créditos
+  legal: Confira seu extrato. Em caso de divergência, procure sua agência em até 30 dias. Ouvidoria e SAC disponíveis 24 horas.
+  account_types: [Conta corrente, Conta poupança, Conta salário, Conta digital]
+  merchants: [Supermercado Pão Doce, Drogaria Bem Estar, Padaria Real, Posto Estrada, Metrô, Livraria Saber, Mercado Central, Lanchonete Sabor, Magazine Eletro, Casa & Construção, Cine Center, Hortifruti Verde]
+  tx:
+    salary: "CRED SALARIO {employer}"
+    card: "COMPRA CARTAO {merchant}"
+    grocery: "COMPRA DEB {merchant}"
+    transfer_out: "PIX ENVIADO {ref}"
+    transfer_in: "PIX RECEBIDO {ref}"
+    atm: "SAQUE 24H {ref}"
+    utility: "DEB AUT CONTA LUZ {ref}"
+    subscription: "ASSINATURA {merchant}"
+    fee: "TARIFA PACOTE SERVICOS"
+
+flight_ticket:
+  title: Recibo do Bilhete Eletrônico
+  itinerary: Itinerário
+  boarding_pass: Cartão de Embarque
+  passenger: Passageiro
+  booking_reference: Código da reserva (localizador)
+  ticket_number: Número do bilhete
+  frequent_flyer: Cartão fidelidade
+  issued_by: Emitido por
+  flight: Voo
+  from: Origem
+  to: Destino
+  departure: Partida
+  arrival: Chegada
+  terminal: Terminal
+  gate: Portão
+  seat: Assento
+  boarding_time: Embarque
+  class: Classe
+  baggage: Bagagem
+  status: Situação
+  fare: Tarifa
+  taxes_fees: Taxas de embarque e encargos
+  payment: Forma de pagamento
+  notice: O check-in encerra 60 minutos antes da partida. O portão fecha 20 minutos antes. Apresente documento oficial com foto.
+  payment_methods: [Cartão de crédito, Cartão de débito, Pix, Boleto, Agência de viagens]
+  cabins:
+    economy: Econômica
+    premium: Econômica Premium
+    business: Executiva
+    first: Primeira classe
+
+hotel_reservation:
+  title: Confirmação de Reserva
+  voucher: Voucher de Hospedagem
+  greeting: "Prezado(a) {name}, obrigado pela sua reserva. Será um prazer recebê-lo(a)."
+  confirmation_number: Número de confirmação
+  booking_reference: Código da reserva
+  booking_date: Data da reserva
+  guest: Hóspede
+  check_in: Check-in
+  check_out: Check-out
+  from_time: a partir das
+  until_time: até
+  nights: Diárias
+  room_count: Quartos
+  room_type: Tipo de quarto
+  guests: Hóspedes
+  adults: adultos
+  children: crianças
+  board: Regime
+  rate_per_night: Valor da diária
+  taxes: Taxas e impostos
+  total_price: Valor total
+  payment_status: Pagamento
+  pay_at_hotel: Pagar no hotel
+  cancellation: "Cancelamento gratuito até {date}. Após essa data, será cobrada a primeira diária."
+  contact: Contato do hotel
+  streets: [Av. Paulista, Rua Augusta, Av. Atlântica, Rua das Flores, Av. Beira-Mar, Rua XV de Novembro, Av. Brasil, Rua da Consolação]
+  boards: [Sem refeições, Café da manhã incluso, Meia pensão, Pensão completa, All inclusive]
+  rooms:
+    standard: Quarto Standard Casal
+    deluxe: Quarto Luxo King
+    twin: Quarto Superior Duas Camas
+    suite: Suíte Júnior
+    family: Quarto Família
+
+birth_certificate:
+  title: Certidão de Nascimento
+  subtitle: Segunda via – registro civil das pessoas naturais
+  certificate_number: Matrícula
+  registration_number: Livro / Folha / Termo
+  district: Cartório
+  child: Dados do registrado
+  full_name: Nome completo
+  sex: Sexo
+  male: Masculino
+  female: Feminino
+  time_of_birth: Hora de nascimento
+  hospital: Local do parto
+  father: Pai
+  mother: Mãe
+  parents: Filiação
+  registration_date: Data do registro
+  registrar: Oficial de Registro
+  certify: Certifico que a presente certidão é reprodução fiel do registro lavrado neste cartório.
+  hospitals: [Hospital e Maternidade Santa Clara, Hospital Municipal, Maternidade São Lucas, Hospital Regional, Hospital Universitário]
+  registrar_titles: [Oficial de Registro Civil, Escrevente Autorizado, Oficial Substituto]
+
+utility_bill:
+  title: Conta de Energia Elétrica
+  account_number: Código do cliente
+  invoice_number: Nota fiscal nº
+  meter_number: Nº do medidor
+  customer: Cliente
+  service_address: Endereço da instalação
+  billing_period: Período de consumo
+  amount_due: Total a pagar
+  pay_by: Vencimento
+  meter_readings: Leituras
+  previous_reading: Leitura anterior
+  current_reading: Leitura atual
+  consumption: Consumo
+  charges: Itens da fatura
+  usage_history: Histórico de consumo (kWh)
+  customer_service: Atendimento ao cliente
+  lines:
+    energy: Consumo de energia
+    network: Uso do sistema de distribuição
+    fixed: Contribuição de iluminação pública
+
+payslip:
+  title: Holerite
+  employer: Empregador
+  employee: Funcionário
+  employee_id: Matrícula
+  tax_id: CPF
+  job_title: Cargo
+  department: Departamento
+  hire_date: Admissão
+  pay_period: Competência
+  pay_date: Data de pagamento
+  bank_account: Conta para crédito
+  earnings_title: Proventos
+  deductions_title: Descontos
+  gross_pay: Total de proventos
+  total_deductions: Total de descontos
+  net_pay: Valor líquido
+  year_to_date: Acumulado no ano
+  confidential: Confidencial
+  departments: [Financeiro, Operações, Comercial, Engenharia, Recursos Humanos, Logística, Atendimento, Marketing]
+  earnings:
+    basic: Salário base
+    housing: Auxílio moradia
+    transport: Vale-transporte
+    overtime: Horas extras
+    bonus: Gratificação
+  deductions:
+    income_tax: IRRF
+    social_security: INSS
+    pension: Previdência privada
+    health: Plano de saúde
+
+invoice:
+  title: Fatura
+  invoice_number: Fatura nº
+  order_number: Pedido nº
+  bill_to: Cliente
+  from: Emitente
+  tax_id: CNPJ
+  item: Item
+  payment_details: Dados para pagamento
+  bank_transfer: Transferência para
+  thanks: Agradecemos a preferência!
+  items: [Manutenção de site (mensal), Consultoria (horas), Cadeira de escritório, Suporte para notebook, Cartucho de toner, Licença de software (anual), Plano de hospedagem em nuvem, Serviços de design gráfico, Serviços de tradução, Teclado sem fio, Dock USB-C, Entrega e instalação]

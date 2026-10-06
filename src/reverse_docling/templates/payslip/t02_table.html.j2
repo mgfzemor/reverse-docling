@@ -1,0 +1,31 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block meta %}<meta name="rdock-footer" content="off"><meta name="rdock-paper" content="A5-landscape"><meta name="rdock-margin" content="8mm">{% endblock %}
+{% block style %}
+body { font-size: 8pt; font-family: Arial, {{ font_stack | safe }}; }
+table.g td, table.g th { border: 1px solid #555; padding: 3px 5px; }
+table.g th { background: #e5e5e5; font-weight: 700; }
+.ttl { font-size: 12pt; font-weight: 700; text-align: center; padding: 5px; }
+.lab { color: #444; background: #f5f5f5; }
+{% endblock %}
+{% block body %}
+<table class="g">
+  <tr><td colspan="2" rowspan="2" style="width:40%">{{ s.logo }} <strong>{{ doc.employer }}</strong><br><span class="small">{{ doc.employer_address }}</span></td>
+    <td colspan="2" class="ttl">{{ t('payslip.title') }} — {{ fmt.date(doc.period_end, 'MMMM yyyy') }}</td></tr>
+  <tr><td class="lab">{{ t('payslip.pay_date') }}</td><td>{{ fmt.date(doc.pay_date, 'short') }}</td></tr>
+  <tr><td class="lab">{{ t('payslip.employee') }}</td><td><strong>{{ doc.employee_name }}</strong></td><td class="lab">{{ t('payslip.employee_id') }}</td><td class="ltr">{{ doc.employee_id }}</td></tr>
+  <tr><td class="lab">{{ t('payslip.job_title') }}</td><td>{{ doc.job_title }}</td><td class="lab">{{ t('payslip.department') }}</td><td>{{ doc.department }}</td></tr>
+  <tr><td class="lab">{{ t('payslip.tax_id') }}</td><td class="ltr">{{ doc.employee_tax_id }}</td><td class="lab">{{ t('payslip.bank_account') }}</td><td class="ltr small">{{ doc.bank_account }}</td></tr>
+</table>
+<table class="g" style="margin-top:6px">
+  <thead><tr><th>{{ t('common.description') }}</th><th class="num">{{ t('payslip.earnings_title') }}</th><th class="num">{{ t('payslip.deductions_title') }}</th></tr></thead>
+  <tbody>
+  {% for e in doc.earnings %}<tr><td>{{ e.label }}</td><td class="num">{{ fmt.money(e.amount, symbol=False) }}</td><td></td></tr>{% endfor %}
+  {% for d in doc.deductions %}<tr><td>{{ d.label }}</td><td></td><td class="num">{{ fmt.money(d.amount, symbol=False) }}</td></tr>{% endfor %}
+  <tr><th>{{ t('common.total') }}</th><th class="num">{{ fmt.money(doc.gross, symbol=False) }}</th><th class="num">{{ fmt.money(doc.total_deductions, symbol=False) }}</th></tr>
+  <tr><th>{{ t('payslip.net_pay') }} ({{ doc.currency }})</th><th colspan="2" class="num" style="font-size:11pt">{{ fmt.money(doc.net) }}</th></tr>
+  </tbody>
+</table>
+<table class="g" style="margin-top:6px"><tr><td class="lab">{{ t('payslip.year_to_date') }} — {{ t('payslip.gross_pay') }}</td><td class="num">{{ fmt.money(doc.ytd_gross) }}</td>
+  <td class="lab">{{ t('payslip.net_pay') }}</td><td class="num">{{ fmt.money(doc.ytd_net) }}</td></tr></table>
+{% endblock %}

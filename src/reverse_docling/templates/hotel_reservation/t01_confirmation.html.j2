@@ -1,0 +1,58 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block style %}
+.top { display: flex; justify-content: space-between; align-items: center; }
+.top .brand { display: flex; align-items: center; gap: 12px; }
+.top h1 { margin: 0; font-size: 16pt; color: {{ s.primary }}; }
+.stars { color: #d4a017; letter-spacing: 2px; }
+.conf { background: {{ s.primary }}; color: #fff; padding: 10px 14px; border-radius: 6px; text-align: end; }
+.conf .n { font-size: 15pt; font-weight: 700; }
+.greet { margin: 18px 0; font-size: 10pt; }
+.dates { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 16px; }
+.dates > div { padding: 10px 14px; border-inline-end: 1px solid #ddd; }
+.dates > div:last-child { border: none; }
+.dates .l { font-size: 7.5pt; text-transform: uppercase; color: #777; }
+.dates .v { font-size: 13pt; font-weight: 700; }
+.det td { padding: 6px 4px; border-bottom: 1px solid #eee; }
+.det td:first-child { color: #555; width: 40%; }
+.price { margin-top: 14px; background: {{ s.light }}; padding: 10px 14px; border-radius: 6px; }
+.price td { padding: 3px 0; }
+.price .tot td { font-size: 12pt; font-weight: 700; border-top: 1px solid #999; padding-top: 6px; }
+.policy { margin-top: 16px; font-size: 8.5pt; color: #444; }
+{% endblock %}
+{% block body %}
+<div class="top">
+  <div class="brand">{{ s.logo }}<div><h1>{{ doc.hotel_name }}</h1>
+    <div class="stars">{% for _ in range(doc.stars) %}★{% endfor %}</div>
+    <div class="small muted">{{ doc.hotel_address }}, {{ doc.hotel_city }} · <span class="ltr">{{ doc.hotel_phone }}</span></div></div></div>
+  <div class="conf"><div class="small">{{ t('hotel_reservation.confirmation_number') }}</div><div class="n ltr">{{ doc.confirmation_number }}</div></div>
+</div>
+
+<div class="greet"><strong>{{ t('hotel_reservation.title') }}</strong><br>{{ t('hotel_reservation.greeting', name=doc.guest_name) }}</div>
+
+<div class="dates">
+  <div><div class="l">{{ t('hotel_reservation.check_in') }}</div><div class="v">{{ fmt.date(doc.check_in, 'medium') }}</div>
+    <div class="small muted">{{ t('hotel_reservation.from_time') }} {{ fmt.time(doc.check_in_time) }}</div></div>
+  <div><div class="l">{{ t('hotel_reservation.check_out') }}</div><div class="v">{{ fmt.date(doc.check_out, 'medium') }}</div>
+    <div class="small muted">{{ t('hotel_reservation.until_time') }} {{ fmt.time(doc.check_out_time) }}</div></div>
+  <div><div class="l">{{ t('hotel_reservation.nights') }}</div><div class="v">{{ doc.nights }}</div></div>
+</div>
+
+<table class="det">
+  <tr><td>{{ t('hotel_reservation.guest') }}</td><td><strong>{{ doc.guest_name }}</strong> · <span class="ltr">{{ doc.guest_email }}</span></td></tr>
+  <tr><td>{{ t('hotel_reservation.room_type') }}</td><td>{{ doc.rooms }} × {{ doc.room_type }}</td></tr>
+  <tr><td>{{ t('hotel_reservation.guests') }}</td><td>{{ doc.adults }} {{ t('hotel_reservation.adults') }}{% if doc.children %}, {{ doc.children }} {{ t('hotel_reservation.children') }}{% endif %}</td></tr>
+  <tr><td>{{ t('hotel_reservation.board') }}</td><td>{{ doc.board }}</td></tr>
+  <tr><td>{{ t('hotel_reservation.booking_reference') }}</td><td class="ltr">{{ doc.booking_reference }}</td></tr>
+  <tr><td>{{ t('hotel_reservation.booking_date') }}</td><td>{{ fmt.date(doc.booking_date) }}</td></tr>
+</table>
+
+<div class="price"><table>
+  <tr><td>{{ t('hotel_reservation.rate_per_night') }} × {{ doc.nights }}</td><td class="num">{{ fmt.money(doc.subtotal) }}</td></tr>
+  <tr><td>{{ t('hotel_reservation.taxes') }} ({{ fmt.number(doc.tax_rate * 100) }}%)</td><td class="num">{{ fmt.money(doc.taxes) }}</td></tr>
+  <tr class="tot"><td>{{ t('hotel_reservation.total_price') }}</td><td class="num">{{ fmt.money(doc.total) }}</td></tr>
+  <tr><td>{{ t('hotel_reservation.payment_status') }}</td><td class="num">{{ t('common.paid') if doc.paid else t('hotel_reservation.pay_at_hotel') }}</td></tr>
+</table></div>
+
+<div class="policy">{{ t('hotel_reservation.cancellation', date=fmt.date(doc.free_cancellation_until, 'long')) }}</div>
+{% endblock %}

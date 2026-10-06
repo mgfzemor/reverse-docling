@@ -1,0 +1,242 @@
+common:
+  page: Seite
+  date: Datum
+  description: Buchungstext
+  amount: Betrag
+  currency: Währung
+  issue_date: Ausstellungsdatum
+  name: Name
+  address: Anschrift
+  date_of_birth: Geburtsdatum
+  place_of_birth: Geburtsort
+  nationality: Staatsangehörigkeit
+  phone: Telefon
+  email: E-Mail
+  total: Gesamt
+  subtotal: Nettobetrag
+  tax: MwSt.
+  signature: Unterschrift
+  quantity: Menge
+  unit_price: Einzelpreis
+  reference: Referenz
+  status: Status
+  paid: Bezahlt
+  unpaid: Offen
+  due_date: Fällig am
+  period: Zeitraum
+  discount: Rabatt
+
+brands:
+  words: [Nordstern, Rheintal, Alpen, Wiesengrund, Lindenhof, Elbe, Bergland, Sonnenfeld, Mittelland, Seeblick, Eichwald, Kronberg]
+  bank: ["{word} Bank", "Sparkasse {word}", "{word} Volksbank eG", "Bankhaus {word}"]
+  airline: ["{word} Airlines", "{word} Flug", "Air {word}"]
+  hotel: ["Hotel {word}", "Grandhotel {word}", "{word} Hof", "Landhotel {word}"]
+  utility: ["Stadtwerke {word}", "{word} Energie GmbH", "{word} Strom AG"]
+  company: ["{word} Solutions GmbH", "{word} Gruppe AG", "{word} Technik GmbH & Co. KG"]
+  registry: [Standesamt, Standesamt Mitte, Standesamt der Stadt]
+
+airports:
+  JFK: New York
+  LAX: Los Angeles
+  LHR: London
+  CDG: Paris
+  FRA: Frankfurt am Main
+  MAD: Madrid
+  DXB: Dubai
+  RUH: Riad
+  JED: Dschidda
+  SVO: Moskau
+  PEK: Peking
+  PVG: Shanghai
+  NRT: Tokio
+  GRU: São Paulo
+  DEL: Neu-Delhi
+  BOM: Mumbai
+
+bank_statement:
+  title: Kontoauszug
+  statement_no: Auszug Nr.
+  branch: Filiale
+  account_holder: Kontoinhaber
+  account_number: Kontonummer
+  account_type: Kontoart
+  customer_number: Kundennummer
+  period: Zeitraum
+  reference: Referenz
+  value_date: Wertstellung
+  debit: Soll
+  credit: Haben
+  balance: Saldo
+  opening_balance: Alter Kontostand
+  closing_balance: Neuer Kontostand
+  total_debits: Summe Soll
+  total_credits: Summe Haben
+  legal: Bitte prüfen Sie diesen Kontoauszug. Einwendungen sind innerhalb von 30 Tagen zu erheben. Einlagen sind im Rahmen der gesetzlichen Einlagensicherung geschützt.
+  account_types: [Girokonto, Sparkonto, Tagesgeldkonto, Gehaltskonto]
+  merchants: [Frischmarkt, Stadt-Apotheke, Café am Markt, Tankstelle Autobahn, Verkehrsbetriebe, Buchhandlung Seite, Biomarkt Grün, Gasthaus zur Linde, Elektro Fachmarkt, Baumarkt Werkstatt, Kino Lichtspiele, Bäckerei Korn]
+  tx:
+    salary: "LOHN/GEHALT {employer}"
+    card: "KARTENZAHLUNG {merchant}"
+    grocery: "GIROCARD {merchant}"
+    transfer_out: "ÜBERWEISUNG REF {ref}"
+    transfer_in: "GUTSCHRIFT ÜBERWEISUNG {ref}"
+    atm: "BARGELDAUSZAHLUNG GA {ref}"
+    utility: "LASTSCHRIFT STROM {ref}"
+    subscription: "LASTSCHRIFT ABO {merchant}"
+    fee: "KONTOFÜHRUNGSGEBÜHR"
+
+flight_ticket:
+  title: Beleg zum elektronischen Ticket
+  itinerary: Reiseverlauf
+  boarding_pass: Bordkarte
+  passenger: Passagier
+  booking_reference: Buchungscode
+  ticket_number: Ticketnummer
+  frequent_flyer: Vielfliegernummer
+  issued_by: Ausgestellt von
+  flight: Flug
+  from: Von
+  to: Nach
+  departure: Abflug
+  arrival: Ankunft
+  terminal: Terminal
+  gate: Flugsteig
+  seat: Sitz
+  boarding_time: Einsteigezeit
+  class: Klasse
+  baggage: Freigepäck
+  status: Status
+  fare: Flugpreis
+  taxes_fees: Steuern, Gebühren und Entgelte
+  payment: Zahlungsart
+  notice: Der Check-in schließt 60 Minuten vor Abflug. Der Flugsteig schließt 20 Minuten vor Abflug. Bitte führen Sie ein gültiges Reisedokument mit.
+  payment_methods: [Kreditkarte, Girocard, Barzahlung, Überweisung, Reisebüro]
+  cabins:
+    economy: Economy
+    premium: Premium Economy
+    business: Business
+    first: First
+
+hotel_reservation:
+  title: Buchungsbestätigung
+  voucher: Hotelgutschein
+  greeting: "Sehr geehrte/r {name}, vielen Dank für Ihre Buchung. Wir freuen uns auf Ihren Besuch."
+  confirmation_number: Bestätigungsnummer
+  booking_reference: Buchungsnummer
+  booking_date: Buchungsdatum
+  guest: Gast
+  check_in: Anreise
+  check_out: Abreise
+  from_time: ab
+  until_time: bis
+  nights: Nächte
+  room_count: Zimmer
+  room_type: Zimmerkategorie
+  guests: Gäste
+  adults: Erwachsene
+  children: Kinder
+  board: Verpflegung
+  rate_per_night: Preis pro Nacht
+  taxes: Steuern und Kurtaxe
+  total_price: Gesamtpreis
+  payment_status: Zahlungsstatus
+  pay_at_hotel: Zahlung im Hotel
+  cancellation: "Kostenlose Stornierung bis {date}. Danach wird die erste Nacht berechnet."
+  contact: Kontakt zum Hotel
+  streets: [Hauptstraße, Bahnhofstraße, Marktplatz, Schillerstraße, Goethestraße, Am Hafen, Lindenallee, Kirchgasse]
+  boards: [Ohne Verpflegung, Mit Frühstück, Halbpension, Vollpension, All inclusive]
+  rooms:
+    standard: Standard-Doppelzimmer
+    deluxe: Deluxe-Zimmer mit Kingsize-Bett
+    twin: Superior-Zweibettzimmer
+    suite: Juniorsuite
+    family: Familienzimmer
+
+birth_certificate:
+  title: Geburtsurkunde
+  subtitle: Auszug aus dem Geburtenregister
+  certificate_number: Urkunden-Nr.
+  registration_number: Registernummer
+  district: Standesamt
+  child: Angaben zum Kind
+  full_name: Familienname, Vornamen
+  sex: Geschlecht
+  male: männlich
+  female: weiblich
+  time_of_birth: Geburtszeit
+  hospital: Geburtsklinik
+  father: Vater
+  mother: Mutter
+  parents: Eltern
+  registration_date: Datum der Beurkundung
+  registrar: Standesbeamter/in
+  certify: Die Übereinstimmung mit dem Eintrag im Geburtenregister wird hiermit beglaubigt.
+  hospitals: [Städtisches Klinikum, Frauenklinik am Park, Kreiskrankenhaus, Marienhospital, Universitätsklinikum]
+  registrar_titles: [Standesbeamter, Standesbeamtin, Leiter des Standesamts]
+
+utility_bill:
+  title: Stromrechnung
+  account_number: Vertragskonto
+  invoice_number: Rechnungsnummer
+  meter_number: Zählernummer
+  customer: Kunde
+  service_address: Lieferstelle
+  billing_period: Abrechnungszeitraum
+  amount_due: Rechnungsbetrag
+  pay_by: Zahlbar bis
+  meter_readings: Zählerstände
+  previous_reading: Alter Zählerstand
+  current_reading: Neuer Zählerstand
+  consumption: Verbrauch
+  charges: Rechnungspositionen
+  usage_history: Ihr Verbrauch (kWh)
+  customer_service: Kundenservice
+  lines:
+    energy: Arbeitspreis
+    network: Netzentgelt
+    fixed: Grundpreis
+
+payslip:
+  title: Gehaltsabrechnung
+  employer: Arbeitgeber
+  employee: Mitarbeiter/in
+  employee_id: Personalnummer
+  tax_id: Steuer-ID
+  job_title: Tätigkeit
+  department: Abteilung
+  hire_date: Eintrittsdatum
+  pay_period: Abrechnungsmonat
+  pay_date: Auszahlung am
+  bank_account: Überweisung auf
+  earnings_title: Bezüge
+  deductions_title: Abzüge
+  gross_pay: Gesamtbrutto
+  total_deductions: Summe Abzüge
+  net_pay: Auszahlungsbetrag
+  year_to_date: Jahressumme
+  confidential: Vertraulich
+  departments: [Finanzen, Betrieb, Vertrieb, Entwicklung, Personal, Logistik, Kundenservice, Marketing]
+  earnings:
+    basic: Grundgehalt
+    housing: Mietzuschuss
+    transport: Fahrtkostenzuschuss
+    overtime: Überstunden
+    bonus: Leistungsprämie
+  deductions:
+    income_tax: Lohnsteuer
+    social_security: Rentenversicherung
+    pension: Betriebliche Altersvorsorge
+    health: Krankenversicherung
+
+invoice:
+  title: Rechnung
+  invoice_number: Rechnungsnr.
+  order_number: Auftragsnr.
+  bill_to: Rechnungsempfänger
+  from: Rechnungssteller
+  tax_id: USt-IdNr.
+  item: Bezeichnung
+  payment_details: Zahlungsinformationen
+  bank_transfer: Überweisung an
+  thanks: Vielen Dank für Ihren Auftrag!
+  items: [Website-Wartung (monatlich), Beratungsleistungen (Stunden), Bürostuhl, Laptopständer, Tonerkartusche, Softwarelizenz (jährlich), Cloud-Hosting-Tarif, Grafikdesign-Leistungen, Übersetzungsleistungen, Kabellose Tastatur, USB-C-Dockingstation, Lieferung und Montage]

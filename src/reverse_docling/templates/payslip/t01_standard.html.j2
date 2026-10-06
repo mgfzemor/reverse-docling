@@ -1,0 +1,53 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% block meta %}<meta name="rdock-footer" content="off">{% endblock %}
+{% block style %}
+.hd { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid {{ s.primary }}; padding-bottom: 8px; }
+.hd .co { display: flex; gap: 10px; align-items: center; }
+.hd .co b { font-size: 13pt; }
+.hd h1 { margin: 0; font-size: 16pt; color: {{ s.primary }}; text-transform: uppercase; }
+.conf { font-size: 7.5pt; text-transform: uppercase; color: #a00; text-align: end; }
+.info { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; margin: 12px 0; }
+.info div { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 3px 0; }
+.info span:first-child { color: #666; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.two th { background: {{ s.light }}; color: {{ s.primary }}; padding: 5px 6px; font-size: 8.5pt; }
+.two td { padding: 4px 6px; border-bottom: 1px solid #eee; }
+.two tr.sum td { font-weight: 700; border-top: 1px solid #333; }
+.net { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; background: {{ s.primary }}; color: #fff; padding: 12px 16px; border-radius: 6px; }
+.net .v { font-size: 18pt; font-weight: 800; }
+.ytd { margin-top: 10px; font-size: 8.5pt; color: #444; }
+{% endblock %}
+{% block body %}
+<div class="hd">
+  <div class="co">{{ s.logo }}<div><b>{{ doc.employer }}</b><div class="small muted">{{ doc.employer_address }}</div>
+    <div class="small muted">{{ t('payslip.tax_id') }}: {{ doc.employer_tax_id }}</div></div></div>
+  <div><h1>{{ t('payslip.title') }}</h1><div class="conf">{{ t('payslip.confidential') }}</div></div>
+</div>
+
+<div class="info">
+  <div><span>{{ t('payslip.employee') }}</span><strong>{{ doc.employee_name }}</strong></div>
+  <div><span>{{ t('payslip.pay_period') }}</span><span>{{ fmt.date(doc.period_start, 'short') }} – {{ fmt.date(doc.period_end, 'short') }}</span></div>
+  <div><span>{{ t('payslip.employee_id') }}</span><span class="ltr">{{ doc.employee_id }}</span></div>
+  <div><span>{{ t('payslip.pay_date') }}</span><span>{{ fmt.date(doc.pay_date) }}</span></div>
+  <div><span>{{ t('payslip.job_title') }}</span><span>{{ doc.job_title }}</span></div>
+  <div><span>{{ t('payslip.department') }}</span><span>{{ doc.department }}</span></div>
+  <div><span>{{ t('payslip.tax_id') }}</span><span class="ltr">{{ doc.employee_tax_id }}</span></div>
+  <div><span>{{ t('payslip.hire_date') }}</span><span>{{ fmt.date(doc.hire_date, 'short') }}</span></div>
+</div>
+
+<div class="two">
+  <table><thead><tr><th>{{ t('payslip.earnings_title') }}</th><th class="num">{{ t('common.amount') }}</th></tr></thead><tbody>
+    {% for e in doc.earnings %}<tr><td>{{ e.label }}</td><td class="num">{{ fmt.money(e.amount, symbol=False) }}</td></tr>{% endfor %}
+    <tr class="sum"><td>{{ t('payslip.gross_pay') }}</td><td class="num">{{ fmt.money(doc.gross, symbol=False) }}</td></tr>
+  </tbody></table>
+  <table><thead><tr><th>{{ t('payslip.deductions_title') }}</th><th class="num">{{ t('common.amount') }}</th></tr></thead><tbody>
+    {% for d in doc.deductions %}<tr><td>{{ d.label }}</td><td class="num">{{ fmt.money(d.amount, symbol=False) }}</td></tr>{% endfor %}
+    <tr class="sum"><td>{{ t('payslip.total_deductions') }}</td><td class="num">{{ fmt.money(doc.total_deductions, symbol=False) }}</td></tr>
+  </tbody></table>
+</div>
+
+<div class="net"><div>{{ t('payslip.net_pay') }}<div class="small">{{ t('payslip.bank_account') }}: <span class="ltr">{{ doc.bank_account }}</span></div></div>
+  <div class="v">{{ fmt.money(doc.net) }}</div></div>
+<div class="ytd">{{ t('payslip.year_to_date') }}: {{ t('payslip.gross_pay') }} {{ fmt.money(doc.ytd_gross) }} · {{ t('payslip.net_pay') }} {{ fmt.money(doc.ytd_net) }}</div>
+{% endblock %}

@@ -1,0 +1,242 @@
+common:
+  page: 页
+  date: 日期
+  description: 摘要
+  amount: 金额
+  currency: 币种
+  issue_date: 开具日期
+  name: 姓名
+  address: 地址
+  date_of_birth: 出生日期
+  place_of_birth: 出生地点
+  nationality: 国籍
+  phone: 电话
+  email: 电子邮箱
+  total: 合计
+  subtotal: 小计
+  tax: 税额
+  signature: 签字
+  quantity: 数量
+  unit_price: 单价
+  reference: 参考号
+  status: 状态
+  paid: 已付款
+  unpaid: 未付款
+  due_date: 付款截止日
+  period: 期间
+  discount: 折扣
+
+brands:
+  words: [华信, 远航, 青岚, 鸿运, 嘉禾, 金桥, 瑞丰, 星辰, 海川, 祥云, 云帆, 恒泰]
+  bank: ["{word}银行", "{word}商业银行", "{word}农村商业银行", "{word}储蓄银行"]
+  airline: ["{word}航空", "{word}航空公司", "{word}快线航空"]
+  hotel: ["{word}大酒店", "{word}宾馆", "{word}国际酒店", "{word}度假酒店"]
+  utility: ["{word}供电公司", "{word}电力有限公司", "{word}能源公司"]
+  company: ["{word}科技有限公司", "{word}贸易有限公司", "{word}信息技术有限公司"]
+  registry: [户籍管理办公室, 出生登记处, 卫生健康委员会出生医学证明办公室]
+
+airports:
+  JFK: 纽约
+  LAX: 洛杉矶
+  LHR: 伦敦
+  CDG: 巴黎
+  FRA: 法兰克福
+  MAD: 马德里
+  DXB: 迪拜
+  RUH: 利雅得
+  JED: 吉达
+  SVO: 莫斯科
+  PEK: 北京
+  PVG: 上海
+  NRT: 东京
+  GRU: 圣保罗
+  DEL: 新德里
+  BOM: 孟买
+
+bank_statement:
+  title: 账户交易明细对账单
+  statement_no: 对账单编号
+  branch: 开户网点
+  account_holder: 户名
+  account_number: 账号
+  account_type: 账户类型
+  customer_number: 客户号
+  period: 查询期间
+  reference: 交易流水号
+  value_date: 记账日期
+  debit: 支出
+  credit: 存入
+  balance: 余额
+  opening_balance: 期初余额
+  closing_balance: 期末余额
+  total_debits: 支出合计
+  total_credits: 存入合计
+  legal: 请及时核对本对账单，如有疑问请于30日内联系开户网点。本对账单仅供参考，以银行系统记录为准。
+  account_types: [活期储蓄账户, 个人结算账户, 定期存款账户, 借记卡账户]
+  merchants: [华联便利店, 康健大药房, 晨光咖啡, 顺通加油站, 地铁公交, 文华书店, 鲜丰超市, 老街快餐, 数码电器城, 家居建材城, 星光影城, 优选网购]
+  tx:
+    salary: "代发工资 {employer}"
+    card: "消费 {merchant}"
+    grocery: "POS消费 {merchant}"
+    transfer_out: "网银转出 {ref}"
+    transfer_in: "转账存入 {ref}"
+    atm: "ATM取款 {ref}"
+    utility: "代扣电费 {ref}"
+    subscription: "快捷支付 {merchant}"
+    fee: "账户管理费"
+
+flight_ticket:
+  title: 电子客票行程单
+  itinerary: 航班行程
+  boarding_pass: 登机牌
+  passenger: 旅客姓名
+  booking_reference: 订座记录编号
+  ticket_number: 电子客票号码
+  frequent_flyer: 常旅客卡号
+  issued_by: 填开单位
+  flight: 航班号
+  from: 出发
+  to: 到达
+  departure: 起飞
+  arrival: 到达
+  terminal: 航站楼
+  gate: 登机口
+  seat: 座位号
+  boarding_time: 登机时间
+  class: 舱位
+  baggage: 免费行李
+  status: 状态
+  fare: 票价
+  taxes_fees: 民航发展基金及燃油附加费
+  payment: 支付方式
+  notice: 航班起飞前60分钟停止办理乘机手续，登机口于起飞前20分钟关闭。请携带有效身份证件。
+  payment_methods: [信用卡, 借记卡, 现金, 支付宝, 微信支付]
+  cabins:
+    economy: 经济舱
+    premium: 超级经济舱
+    business: 公务舱
+    first: 头等舱
+
+hotel_reservation:
+  title: 预订确认单
+  voucher: 酒店入住凭证
+  greeting: "尊敬的{name}，感谢您的预订，我们期待您的光临。"
+  confirmation_number: 确认号
+  booking_reference: 订单号
+  booking_date: 预订日期
+  guest: 入住人
+  check_in: 入住日期
+  check_out: 离店日期
+  from_time: 自
+  until_time: 前
+  nights: 晚数
+  room_count: 房间数
+  room_type: 房型
+  guests: 入住人数
+  adults: 成人
+  children: 儿童
+  board: 餐食
+  rate_per_night: 每晚房价
+  taxes: 税费及服务费
+  total_price: 总价
+  payment_status: 付款状态
+  pay_at_hotel: 到店付款
+  cancellation: "{date}前可免费取消，之后取消将收取首晚房费。"
+  contact: 酒店联系电话
+  streets: [人民路, 中山路, 解放大道, 建设路, 南京路, 长安街, 滨江大道, 和平路]
+  boards: [不含早餐, 含早餐, 含早晚餐, 含三餐, 全包]
+  rooms:
+    standard: 标准大床房
+    deluxe: 豪华大床房
+    twin: 高级双床房
+    suite: 行政套房
+    family: 家庭房
+
+birth_certificate:
+  title: 出生医学证明
+  subtitle: 出生登记证明副本
+  certificate_number: 证明编号
+  registration_number: 登记号
+  district: 登记机关
+  child: 新生儿信息
+  full_name: 姓名
+  sex: 性别
+  male: 男
+  female: 女
+  time_of_birth: 出生时间
+  hospital: 接生机构
+  father: 父亲姓名
+  mother: 母亲姓名
+  parents: 父母信息
+  registration_date: 登记日期
+  registrar: 签发人
+  certify: 兹证明本证明内容与出生登记簿记载一致。
+  hospitals: [市妇幼保健院, 市第一人民医院, 中心医院, 省人民医院, 大学附属医院]
+  registrar_titles: [登记员, 主任, 副主任]
+
+utility_bill:
+  title: 电费缴费通知单
+  account_number: 用户编号
+  invoice_number: 账单编号
+  meter_number: 电表号
+  customer: 用户信息
+  service_address: 用电地址
+  billing_period: 计费周期
+  amount_due: 应缴金额
+  pay_by: 缴费截止日期
+  meter_readings: 抄表信息
+  previous_reading: 上次示数
+  current_reading: 本次示数
+  consumption: 本期用电量
+  charges: 费用明细
+  usage_history: 近期用电量（千瓦时）
+  customer_service: 客服热线
+  lines:
+    energy: 电度电费
+    network: 输配电费
+    fixed: 基本电费
+
+payslip:
+  title: 工资条
+  employer: 单位
+  employee: 员工姓名
+  employee_id: 工号
+  tax_id: 身份证号
+  job_title: 职位
+  department: 部门
+  hire_date: 入职日期
+  pay_period: 工资期间
+  pay_date: 发放日期
+  bank_account: 工资卡号
+  earnings_title: 应发项目
+  deductions_title: 扣款项目
+  gross_pay: 应发工资
+  total_deductions: 扣款合计
+  net_pay: 实发工资
+  year_to_date: 本年累计
+  confidential: 保密
+  departments: [财务部, 运营部, 销售部, 研发部, 人力资源部, 物流部, 客服部, 市场部]
+  earnings:
+    basic: 基本工资
+    housing: 住房补贴
+    transport: 交通补贴
+    overtime: 加班费
+    bonus: 绩效奖金
+  deductions:
+    income_tax: 个人所得税
+    social_security: 社会保险
+    pension: 住房公积金
+    health: 医疗保险
+
+invoice:
+  title: 发票
+  invoice_number: 发票号码
+  order_number: 订单号
+  bill_to: 购买方
+  from: 销售方
+  tax_id: 纳税人识别号
+  item: 项目名称
+  payment_details: 付款信息
+  bank_transfer: 收款账户
+  thanks: 感谢您的惠顾！
+  items: [网站维护服务（月）, 咨询服务（小时）, 办公椅, 笔记本支架, 打印机硒鼓, 软件授权（年）, 云服务器租用, 平面设计服务, 翻译服务, 无线键盘, USB-C扩展坞, 送货及安装]

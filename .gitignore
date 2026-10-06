@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+out/
+assets/fonts/*.ttf
+assets/fonts/*.otf
+.DS_Store
+.claude
+.idea

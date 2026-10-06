@@ -1,0 +1,58 @@
+{% extends "_base/base.html.j2" %}
+{% set s = doc._style %}
+{% set seg = doc.segments[0] %}
+{% block meta %}<meta name="rdock-paper" content="210mmx90mm"><meta name="rdock-footer" content="off"><meta name="rdock-margin" content="0">{% endblock %}
+{% block style %}
+body { width: 210mm; height: 90mm; overflow: hidden; }
+.pass { display: grid; grid-template-columns: 1fr 58mm; height: 90mm; }
+.main { padding: 0; border-inline-end: 2px dashed #999; }
+.bar { background: {{ s.primary }}; color: #fff; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; }
+.bar .b { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 12pt; }
+.bar svg { width: 30px; height: 30px; }
+.bar .ttl { font-size: 10pt; text-transform: uppercase; letter-spacing: 1px; }
+.body { padding: 8px 12px; }
+.route { display: flex; align-items: center; gap: 14px; margin: 4px 0 8px; }
+.route .iata { font-size: 26pt; font-weight: 800; line-height: 1; }
+.route .city { font-size: 8pt; color: #555; }
+.route .arrow { font-size: 18pt; color: {{ s.primary }}; }
+.f { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px 10px; }
+.f .l { font-size: 6.5pt; color: #666; text-transform: uppercase; }
+.f .v { font-size: 11pt; font-weight: 700; }
+.stub { padding: 8px 10px; background: {{ s.light }}; font-size: 8pt; }
+.stub .v { font-weight: 700; font-size: 10pt; }
+.barcode { margin-top: 6px; height: 34px; background: repeating-linear-gradient(90deg, #000 0 2px, transparent 2px 3px, #000 3px 4px, transparent 4px 7px, #000 7px 10px, transparent 10px 11px); }
+html[dir=rtl] .route .arrow { transform: scaleX(-1); }
+{% endblock %}
+{% block body %}
+<div class="pass">
+  <div class="main">
+    <div class="bar"><div class="b">{{ s.logo }}{{ doc.airline }}</div><div class="ttl">{{ t('flight_ticket.boarding_pass') }} · {{ seg.cabin }}</div></div>
+    <div class="body">
+      <div class="f" style="grid-template-columns: 2fr 1fr 1fr">
+        <div><div class="l">{{ t('flight_ticket.passenger') }}</div><div class="v ltr">{{ doc.passenger_name }}</div></div>
+        <div><div class="l">{{ t('flight_ticket.flight') }}</div><div class="v ltr">{{ seg.flight }}</div></div>
+        <div><div class="l">{{ t('common.date') }}</div><div class="v">{{ fmt.date(seg.departure.date(), 'medium') }}</div></div>
+      </div>
+      <div class="route">
+        <div><div class="iata">{{ seg.from_code }}</div><div class="city">{{ seg.from_city }}</div></div>
+        <div class="arrow">✈</div>
+        <div><div class="iata">{{ seg.to_code }}</div><div class="city">{{ seg.to_city }}</div></div>
+      </div>
+      <div class="f">
+        <div><div class="l">{{ t('flight_ticket.boarding_time') }}</div><div class="v">{{ fmt.time(seg.boarding) }}</div></div>
+        <div><div class="l">{{ t('flight_ticket.departure') }}</div><div class="v">{{ fmt.time(seg.departure) }}</div></div>
+        <div><div class="l">{{ t('flight_ticket.gate') }}</div><div class="v">{{ seg.gate }}</div></div>
+        <div><div class="l">{{ t('flight_ticket.seat') }}</div><div class="v">{{ seg.seat }}</div></div>
+      </div>
+      <div class="barcode"></div>
+    </div>
+  </div>
+  <div class="stub">
+    <div class="small muted">{{ t('flight_ticket.passenger') }}</div><div class="v ltr">{{ doc.passenger_name }}</div>
+    <div class="small muted" style="margin-top:6px">{{ t('flight_ticket.flight') }}</div><div class="v ltr">{{ seg.flight }}</div>
+    <div class="small muted" style="margin-top:6px">{{ t('flight_ticket.from') }} / {{ t('flight_ticket.to') }}</div><div class="v">{{ seg.from_code }} → {{ seg.to_code }}</div>
+    <div class="small muted" style="margin-top:6px">{{ t('flight_ticket.seat') }} · {{ t('flight_ticket.gate') }}</div><div class="v">{{ seg.seat }} · {{ seg.gate }}</div>
+    <div class="small muted" style="margin-top:6px">PNR</div><div class="v ltr">{{ doc.pnr }}</div>
+  </div>
+</div>
+{% endblock %}
